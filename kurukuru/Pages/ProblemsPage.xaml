@@ -1,0 +1,63 @@
+﻿<Page x:Class="kurukuru.Pages.ProblemsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kurukuru.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200"
+      Title="ProblemsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.45*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="20,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="Search" MinWidth="700" Margin="0,0,20,0" Style="{StaticResource TextBox}" DataContext="Поиск" TextChanged="Search_TextChanged"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <ComboBox x:Name="SortCB" MinWidth="200" Margin="0,0,10,0" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="SortCB_SelectionChanged" FontSize="18"/>
+                    <ComboBox x:Name="FiltCB" MinWidth="200" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="FiltCB_SelectionChanged" FontSize="18"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2,2,0,2">
+            <WrapPanel Orientation="Horizontal" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="NewProblemBTN" Content="Новая проблема" Style="{StaticResource ButtonStyle}" Margin="0,0,30,0" Width="150" Click="NewProblemBTN_Click" Height="40"/>
+                <Button x:Name="NewTagBTN" Content="Новый тэг" Style="{StaticResource ButtonStyle}" Width="150" Click="NewTagBTN_Click" Height="40"/>
+            </WrapPanel>
+        </Border>
+        <ListView BorderBrush="Black" BorderThickness="2,0,0,2" Name="ListProblems" Grid.Row="2" Style="{StaticResource ListView}" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <ContextMenu.Template>
+                        <ControlTemplate>
+                            <Border BorderBrush="DarkGray" CornerRadius="5" BorderThickness="1,1,3,3" Background="White">
+                                <StackPanel Orientation="Vertical">
+                                    <MenuItem Header="Добавить новое" Click="New_Click"/>
+                                    <MenuItem Header="Изменить" Loaded="MenuItemChange_Loaded"/>
+                                    <MenuItem Header="Удалить" Loaded="MenuItemDelete_Loaded"  Click="Delete_Click">
+                                        <MenuItem.Icon>
+                                            <Image Source="\Resources\Images\Delete.png"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2" x:Name="ListSolution">
+        </Border>
+    </Grid>
+</Page>

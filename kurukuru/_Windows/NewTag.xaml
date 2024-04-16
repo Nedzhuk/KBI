@@ -1,0 +1,25 @@
+﻿<Window x:Class="kurukuru._Windows.NewTag"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurukuru._Windows"
+        mc:Ignorable="d"
+        Title="Новый тэг" Height="250" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        BorderBrush="#005FB8"
+        BorderThickness="3" MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Style="{StaticResource TextBox}" DataContext="Название тэга" Height="50" Margin="20" Name="TagName"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Button Style="{StaticResource ButtonStyle}" Content="Сохранить" Height="40" Width="150" Margin="0,0,40,0" Click="Save_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Назад" Height="40" Width="150" Click="Back_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
