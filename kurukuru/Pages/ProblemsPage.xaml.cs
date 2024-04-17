@@ -4,6 +4,7 @@ using kurukuru.Classes;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace kurukuru.Pages
 {
@@ -90,22 +91,25 @@ namespace kurukuru.Pages
         {
             if (ListProblems.SelectedItems.Count > 0)
             {
-                ListView listView = new();
                 StackPanel stackPanel = new StackPanel();
-                StackPanel stackPanel1 = new StackPanel();
                 stackPanel.Orientation = Orientation.Vertical;
                 stackPanel.Margin = new Thickness(30);
                 stackPanel.Children.Add(new TextBlock()
                 {
                     Text = ((Problem)ListProblems.SelectedItem).Title,
                     Name = "TitleTB",
-                    Style = (Style)Application.Current.FindResource("TextBlock")
+                    Style = (Style)Application.Current.FindResource("TextBlock"),
+                    TextDecorations = TextDecorations.Underline,
+                    Margin = new Thickness(0, 0, 0, 5)
                 });
                 stackPanel.Children.Add(new TextBlock()
                 {
                     Text = ((Problem)ListProblems.SelectedItem).Description,
                     Name = "DescriptionTB",
-                    Style = (Style)Application.Current.FindResource("TextBlock")
+                    Style = (Style)Application.Current.FindResource("TextBlock"),
+                    Foreground = (Brush)new BrushConverter().ConvertFrom("#3b3b3b"),
+                    MaxWidth = 1000,
+                    TextWrapping = TextWrapping.Wrap
                 });
                 stackPanel.Children.Add(new TextBlock()
                 {
@@ -125,23 +129,37 @@ namespace kurukuru.Pages
                     {
                         Text = $"Решение {i}",
                         Style = (Style)Application.Current.FindResource("TextBlock"),
-                        FontWeight = FontWeights.Bold
+                        FontWeight = FontWeights.Bold,
+                        Margin = new Thickness(0,10,0,0)
                     });
                     List<String> lsl = KnowledgeBaseLibrary.Classes.Get.GetStepsStringList(solution);
+
+                    int n = 1;
                     foreach (String s in lsl)
                     {
                         sp.Children.Add(new TextBlock()
                         {
-                            Text = s,
+                            Text = $"{n}. " + s,
                             Style = (Style)Application.Current.FindResource("TextBlock"),
-                            Margin = new Thickness(10, 0, 0, 0)
-                        }); ;
+                            Margin = new Thickness(10, 0, 0, 0),
+                            MaxWidth = 1000,
+                            TextWrapping = TextWrapping.Wrap
+                        });
+                        n++;
                     }
                     stackPanel.Children.Add(sp);
                     i++;
                 }
-                listView.Items.Add(stackPanel);
-                ListSolution.Child = listView;
+                stackPanel.Children.Add(new TextBlock()
+                {
+                    Text = $"*Шаблон решения: {(new _43pKnowledgeBaseContext().Solutions.Include(x => x.Answer).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault() != null ? new _43pKnowledgeBaseContext().Solutions.Include(x => x.Answer).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault().Answer.Answer1 : "Не выбран")}",
+                    Name = "AnswerTB",
+                    Style = (Style)Application.Current.FindResource("TextBlock"),
+                    Margin = new Thickness(0, 10, 0, 0),
+                    MaxWidth = 1000,
+                    TextWrapping = TextWrapping.Wrap
+                });
+                ListSolution.Child = stackPanel;
             }
         }
 
@@ -187,9 +205,14 @@ namespace kurukuru.Pages
                 tmp = KnowledgeBaseLibrary.Classes.Sort.SortProblemsByAscendingDate(tmp);
 
             if (Search.Text.Length != 0)
-                tmp = tmp.Where(x => x.Title.ToLower().Contains(Search.Text.ToLower())).ToList();            
+                tmp = KnowledgeBaseLibrary.Classes.Sort.SearchProblemsByTitleDescriptionList(tmp, Search.Text);
             ListProblems.ItemsSource = null;
             ListProblems.ItemsSource = tmp;
+
+        }
+
+        private void Changed_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

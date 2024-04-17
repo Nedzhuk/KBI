@@ -44,7 +44,7 @@
                             <Border BorderBrush="DarkGray" CornerRadius="5" BorderThickness="1,1,3,3" Background="White">
                                 <StackPanel Orientation="Vertical">
                                     <MenuItem Header="Добавить новое" Click="New_Click"/>
-                                    <MenuItem Header="Изменить" Loaded="MenuItemChange_Loaded"/>
+                                    <MenuItem Header="Изменить" Loaded="MenuItemChange_Loaded" Click="Changed_Click"/>
                                     <MenuItem Header="Удалить" Loaded="MenuItemDelete_Loaded"  Click="Delete_Click">
                                         <MenuItem.Icon>
                                             <Image Source="\Resources\Images\Delete.png"/>
