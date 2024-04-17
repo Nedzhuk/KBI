@@ -35,14 +35,12 @@ namespace kurukuru._Windows
                     Title = TagName.Text
                 };
                 KnowledgeBaseLibrary.Classes.Input.InputTag(tagNew);
-                //Application.Current.Properties["NewTag"] = TagName.Text;
                 Close();
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            //Application.Current.Properties["NewTag"] = "";
             Close();
         }
 
