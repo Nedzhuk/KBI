@@ -50,11 +50,15 @@ namespace kurukuru.Pages
 
         private void WindowNT_Closed(object sender, EventArgs e)
         {
-            if (Application.Current.Properties["NewTag"] != "")
+            filtList.Clear();
+            filtList.Add(new Tag() { Title = "Без фильтрации" });
+            foreach (Tag tag in KnowledgeBaseLibrary.Classes.Get.GetTagsList())
             {
-                tagName = (string)Application.Current.Properties["NewTag"];
-                //тут добавление тэга в базу
+                filtList.Add(tag);
             }
+            FiltCB.ItemsSource = null;
+            FiltCB.ItemsSource = filtList;
+            FiltCB.SelectedIndex = 0;
         }
 
         private void MenuItemChange_Loaded(object sender, RoutedEventArgs e)

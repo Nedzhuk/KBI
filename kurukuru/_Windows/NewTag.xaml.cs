@@ -30,14 +30,19 @@ namespace kurukuru._Windows
                 MessageBox.Show("Название тэга не заполнено", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
-                Application.Current.Properties["NewTag"] = TagName.Text;
+                KnowledgeBaseLibrary.Models.Tag tagNew = new KnowledgeBaseLibrary.Models.Tag()
+                {
+                    Title = TagName.Text
+                };
+                KnowledgeBaseLibrary.Classes.Input.InputTag(tagNew);
+                //Application.Current.Properties["NewTag"] = TagName.Text;
                 Close();
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Properties["NewTag"] = "";
+            //Application.Current.Properties["NewTag"] = "";
             Close();
         }
 

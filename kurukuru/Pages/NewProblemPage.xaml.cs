@@ -88,12 +88,29 @@ namespace kurukuru.Pages
             cb.DisplayMemberPath = "Title";
             cb.SelectedValuePath = "Id";
 
+            Button delBtn = new Button();
+            delBtn.Name = "ButtonDel";
+            delBtn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
+            delBtn.Content = "❌";
+            delBtn.Width = 150;
+            delBtn.Height = 30;
+            delBtn.Margin = new Thickness(20, 0, 0, 0);
+            delBtn.Click += DelBtn_Click;
+
             sp.Children.Add(txt);
             sp.Children.Add(cb);
+            sp.Children.Add(delBtn);
             ListView lw = (ListView)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[1];
             lw.Style = (Style)(Application.Current.FindResource("ListView"));
             ((ListView)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[1]).Items.Add(sp);
             n++;
+        }
+
+        private void DelBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            Button button = (Button)sender;
+            ((ListView)((StackPanel)button.Parent).Parent).Items.Remove(button.Parent);
         }
 
         private void SaveBTN_Click(object sender, RoutedEventArgs e)
