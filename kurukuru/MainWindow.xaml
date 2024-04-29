@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="База знаний" MinHeight="650" MinWidth="1200"
         FontSize="18"
-        FontFamily="{StaticResource Nunito}"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized" Icon="/Resources/Images/KnowledgeBase.png">
     <Frame x:Name="frameMW" NavigationUIVisibility="Hidden"/>

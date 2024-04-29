@@ -32,4 +32,9 @@
     <Resource Include="Resources\Images\KnowledgeBase.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="KnowledgeBaseLibrary.Models" />
+    <Using Include="System.Windows" />
+  </ItemGroup>
+
 </Project>

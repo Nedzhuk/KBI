@@ -40,16 +40,16 @@ namespace kurukuru.Pages
         }
         private void InitSolution()
         {
-            Border brd = new Border();
-            brd.BorderBrush = new SolidColorBrush(Colors.Black);
-            brd.BorderThickness = new Thickness(0, 0, 0, 3);
-            brd.CornerRadius = new CornerRadius(5);
-            brd.Margin = new Thickness(0, 0, 0, 10);
-            StackPanel stackPanel = new StackPanel();
-            StackPanel stackPanel1 = new StackPanel();
-            stackPanel1.Orientation = Orientation.Horizontal;
             foreach (Solution solution in KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit))
             {
+                Border brd = new Border();
+                brd.BorderBrush = new SolidColorBrush(Colors.Black);
+                brd.BorderThickness = new Thickness(0, 0, 0, 3);
+                brd.CornerRadius = new CornerRadius(5);
+                brd.Margin = new Thickness(0, 0, 0, 10);
+                StackPanel stackPanel = new StackPanel();
+                StackPanel stackPanel1 = new StackPanel();
+                stackPanel1.Orientation = Orientation.Horizontal;
                 stackPanel1.Children.Add(new TextBlock()
                 {
                     Text = $"Решение {I}",
@@ -65,7 +65,8 @@ namespace kurukuru.Pages
                 btn.Margin = new Thickness(30, 0, 0, 0);
                 btn.Click += Btn_Click;
                 stackPanel1.Children.Add(btn);
-                stackPanel.Children.Add(new ListView() { Name = "LW" });
+                stackPanel.Children.Add(stackPanel1);
+                ListView listView = new() { Name = "LW" };
                 foreach (Step step in KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution))
                 {
                     StackPanel sp = new StackPanel();
@@ -102,15 +103,15 @@ namespace kurukuru.Pages
                     sp.Children.Add(cb);
                     sp.Children.Add(delBtn);
 
-                    LS.Items.Add(sp);
+                    listView.Items.Add(sp);
                 }
+                stackPanel.Children.Add(listView);
+                brd.Child = stackPanel;
+                LS.Items.Add(brd);
+                n++;
+                I++;
+                solutionCount++;
             }
-            stackPanel.Children.Add(stackPanel1);
-            brd.Child = stackPanel;
-            LS.Items.Add(brd);
-            n++;
-            I++;
-            solutionCount++;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
