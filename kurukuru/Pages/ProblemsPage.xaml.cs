@@ -133,6 +133,7 @@ namespace kurukuru.Pages
                         Margin = new Thickness(0,10,0,0)
                     });
                     List<String> lsl = KnowledgeBaseLibrary.Classes.Get.GetStepsStringList(solution);
+                    List<Step> lss = KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution);
 
                     int n = 1;
                     foreach (String s in lsl)
@@ -213,7 +214,7 @@ namespace kurukuru.Pages
 
         private void Changed_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameClass.FrameKBI.Navigate(new NewProblemPage((Problem)ListProblems.SelectedItem));
         }
     }
 }

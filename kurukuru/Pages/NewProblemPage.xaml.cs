@@ -15,12 +15,102 @@ namespace kurukuru.Pages
         List<StackPanel> spList = new List<StackPanel>();
         KnowledgeBaseLibrary.Models.Problem problemNew = new();
         List<KnowledgeBaseLibrary.Models.Tag> tagProblemList = new List<KnowledgeBaseLibrary.Models.Tag>();
+        Problem problemEdit = new Problem();
+        int I { get; set; } = 1;
+        int solutionCount { get; set; } = 0;
+        int n = 0;
 
         public NewProblemPage()
         {
             InitializeComponent();
             TagsCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetTagsList();
             AnswersCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetAnswersList();
+        }
+        public NewProblemPage(Problem problem)
+        {
+            InitializeComponent();
+            problemEdit = problem;
+            TitleProblem_TB.Text = problemEdit.Title;
+            DescriptionProblem_TB.Text = problemEdit.Description;
+            TagsCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetTagsList();
+            TagsCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetTagsByProblem(problemEdit)[0];
+            AnswersCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetAnswersList();
+            AnswersCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetAnswerBySolution(KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit)[0]);
+            InitSolution();
+        }
+        private void InitSolution()
+        {
+            Border brd = new Border();
+            brd.BorderBrush = new SolidColorBrush(Colors.Black);
+            brd.BorderThickness = new Thickness(0, 0, 0, 3);
+            brd.CornerRadius = new CornerRadius(5);
+            brd.Margin = new Thickness(0, 0, 0, 10);
+            StackPanel stackPanel = new StackPanel();
+            StackPanel stackPanel1 = new StackPanel();
+            stackPanel1.Orientation = Orientation.Horizontal;
+            foreach (Solution solution in KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit))
+            {
+                stackPanel1.Children.Add(new TextBlock()
+                {
+                    Text = $"Решение {I}",
+                    FontSize = 20,
+                    FontFamily = (FontFamily)(Application.Current.FindResource("Nunito"))
+                });
+                Button btn = new Button();
+                btn.Name = "ButtonAdd";
+                btn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
+                btn.Content = "Добавить шаг";
+                btn.Width = 150;
+                btn.Height = 30;
+                btn.Margin = new Thickness(30, 0, 0, 0);
+                btn.Click += Btn_Click;
+                stackPanel1.Children.Add(btn);
+                stackPanel.Children.Add(new ListView() { Name = "LW" });
+                foreach (Step step in KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution))
+                {
+                    StackPanel sp = new StackPanel();
+                    sp.Name = $"stackPanel{n}";
+                    sp.Orientation = Orientation.Horizontal;
+                    sp.Margin = new Thickness(0, 0, 0, 5);
+
+                    TextBox txt = new TextBox();
+                    txt.Style = (Style)Application.Current.FindResource("TextBox");
+                    txt.Width = 550;
+                    txt.Margin = new Thickness(0, 0, 10, 0);
+                    txt.Name = $"solution{n}";
+                    txt.Text = step.Action;
+
+                    ComboBox cb = new ComboBox();
+                    cb.Name = $"comboBox{n}";
+                    cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
+                    cb.Width = 160;
+                    cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
+                    cb.DisplayMemberPath = "Title";
+                    cb.SelectedValuePath = "Id";
+                    cb.SelectedItem = step.SoftId;
+
+                    Button delBtn = new Button();
+                    delBtn.Name = "ButtonDel";
+                    delBtn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
+                    delBtn.Content = "❌";
+                    delBtn.Width = 150;
+                    delBtn.Height = 30;
+                    delBtn.Margin = new Thickness(20, 0, 0, 0);
+                    delBtn.Click += DelBtn_Click;
+
+                    sp.Children.Add(txt);
+                    sp.Children.Add(cb);
+                    sp.Children.Add(delBtn);
+
+                    LS.Items.Add(sp);
+                }
+            }
+            stackPanel.Children.Add(stackPanel1);
+            brd.Child = stackPanel;
+            LS.Items.Add(brd);
+            n++;
+            I++;
+            solutionCount++;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -29,9 +119,6 @@ namespace kurukuru.Pages
             if (mbr == MessageBoxResult.Yes)
                 FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
-        int I { get; set; } = 1;
-        int solutionCount { get; set; } = 0;
-        int n = 0;
 
         private void AddSolut_Click(object sender, RoutedEventArgs e)
         {
@@ -150,14 +237,17 @@ namespace kurukuru.Pages
                             ListView listView = (ListView)((StackPanel)border.Child).Children[1];
 
                             List<Step> steps = new();
+                            int numb = 1;
 
                             foreach (StackPanel stackPanel in listView.Items.Cast<StackPanel>().ToList())
                             {
                                 steps.Add(new()
                                 {
                                     Action = ((TextBox)stackPanel.Children[0]).Text,
+                                    Number = numb,
                                     SoftId = (((ComboBox)stackPanel.Children[1]).SelectedIndex > -1 ? ((Soft)((ComboBox)stackPanel.Children[1]).SelectedItem).Id : null)
                                 });
+                                numb++;
                             }
 
                             solutionList.Add(new Solution()
@@ -177,7 +267,7 @@ namespace kurukuru.Pages
                         FrameClass.FrameKBI.Navigate(new ProblemsPage());
 
                     }
-                    else 
+                    else
                         MessageBox.Show("Нет решения проблемы.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
