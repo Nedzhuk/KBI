@@ -85,6 +85,7 @@ namespace kurukuru.Pages
                     cb.Name = $"comboBox{n}";
                     cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
                     cb.Width = 160;
+                    cb.FontSize = 18;
                     cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
                     cb.DisplayMemberPath = "Title";
                     cb.SelectedValuePath = "Id";
@@ -172,6 +173,7 @@ namespace kurukuru.Pages
             cb.Name = $"comboBox{n}";
             cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
             cb.Width = 160;
+            cb.FontSize = 18;
             cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
             cb.DisplayMemberPath = "Title";
             cb.SelectedValuePath = "Id";

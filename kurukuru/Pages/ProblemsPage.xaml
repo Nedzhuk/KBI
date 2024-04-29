@@ -25,18 +25,18 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="Search" MinWidth="700" Margin="0,0,20,0" Style="{StaticResource TextBox}" DataContext="Поиск" TextChanged="Search_TextChanged"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <ComboBox x:Name="SortCB" MinWidth="200" Margin="0,0,10,0" Style="{DynamicResource ComboBox}" SelectionChanged="SortCB_SelectionChanged" FontSize="18"/>
-                    <ComboBox x:Name="FiltCB" MinWidth="200" Style="{DynamicResource ComboBox}" SelectionChanged="FiltCB_SelectionChanged" FontSize="18"/>
+                    <ComboBox x:Name="SortCB" MinWidth="200" Margin="0,0,10,0" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="SortCB_SelectionChanged" FontSize="18"/>
+                    <ComboBox x:Name="FiltCB" MinWidth="200" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="FiltCB_SelectionChanged" FontSize="18"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
         <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2,2,0,2">
             <WrapPanel Orientation="Horizontal" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="NewProblemBTN" Content="Новая проблема" Style="{DynamicResource Button.Accent}" Margin="0,0,30,0" Width="150" Click="NewProblemBTN_Click" Height="40"/>
-                <Button x:Name="NewTagBTN" Content="Новый тэг" Style="{DynamicResource Button.Standart}" Width="150" Click="NewTagBTN_Click" Height="40"/>
+                <Button x:Name="NewProblemBTN" Content="Новая проблема" Style="{StaticResource ButtonStyle}" Margin="0,0,30,0" Width="150" Click="NewProblemBTN_Click" Height="40"/>
+                <Button x:Name="NewTagBTN" Content="Новый тэг" Style="{StaticResource ButtonStyle}" Width="150" Click="NewTagBTN_Click" Height="40"/>
             </WrapPanel>
         </Border>
-        <ListView BorderBrush="Black" BorderThickness="2,0,0,2" Name="ListProblems" Grid.Row="2" Style="{DynamicResource ListView}" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
+        <ListView BorderBrush="Black" BorderThickness="2,0,0,2" Name="ListProblems" Grid.Row="2" Style="{StaticResource ListView}" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <ContextMenu.Template>
