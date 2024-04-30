@@ -1,6 +1,4 @@
-﻿using KnowledgeBaseLibrary.Models;
-using kurukuru.Classes;
-using System.Windows;
+﻿using kurukuru.Classes;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -63,8 +61,19 @@ namespace kurukuru.Pages
                 btn.Width = 150;
                 btn.Height = 30;
                 btn.Margin = new Thickness(30, 0, 0, 0);
+
+                Button btnD = new Button();
+                btnD.Name = "ButtonDelSolution";
+                btnD.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
+                btnD.Content = "Удалить решение";
+                btnD.Width = 150;
+                btnD.Height = 30;
+                btnD.Margin = new Thickness(30, 0, 0, 0);
+                btnD.Click += BtnD_Click;
+
                 btn.Click += Btn_Click;
                 stackPanel1.Children.Add(btn);
+                stackPanel1.Children.Add(btnD);
                 stackPanel.Children.Add(stackPanel1);
                 ListView listView = new() { Name = "LW" };
                 foreach (Step step in KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution))
@@ -115,6 +124,20 @@ namespace kurukuru.Pages
             }
         }
 
+        private void BtnD_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Border border = (Border)((StackPanel)((StackPanel)button.Parent).Parent).Parent;
+            ListView listView = (ListView)border.Parent;
+            listView.Items.Remove(border);
+
+            for(int i = 0; i < listView.Items.Count; i++)
+            {
+                ((TextBlock)((StackPanel)((StackPanel)((Border)listView.Items[i]).Child).Children[0]).Children[0]).Text = $"Решение {i + 1}";
+            }
+            I--;
+        }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult mbr = MessageBox.Show("Изменения не будут сохранены. Выйти?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
@@ -146,7 +169,18 @@ namespace kurukuru.Pages
             btn.Height = 30;
             btn.Margin = new Thickness(30, 0, 0, 0);
             btn.Click += Btn_Click;
+
+            Button btnD = new Button();
+            btnD.Name = "ButtonDelSolution";
+            btnD.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
+            btnD.Content = "Удалить решение";
+            btnD.Width = 150;
+            btnD.Height = 30;
+            btnD.Margin = new Thickness(30, 0, 0, 0);
+            btnD.Click += BtnD_Click;
+
             stackPanel1.Children.Add(btn);
+            stackPanel1.Children.Add(btnD);
             stackPanel.Children.Add(stackPanel1);
             brd.Child = stackPanel;
             stackPanel.Children.Add(new ListView() { Name = "LW" });
@@ -198,7 +232,6 @@ namespace kurukuru.Pages
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-
             Button button = (Button)sender;
             ((ListView)((StackPanel)button.Parent).Parent).Items.Remove(button.Parent);
         }
@@ -209,25 +242,53 @@ namespace kurukuru.Pages
             DescriptionProblem_TB.Style = (Style)(Application.Current.FindResource("TextBox"));
 
             bool result = true;
-            if (TitleProblem_TB.Text.Length > 0)
-                problemNew.Title = TitleProblem_TB.Text;
-            else
+            if (problemEdit == null)
             {
-                TitleProblem_TB.BorderBrush = new SolidColorBrush(Colors.Red);
-                result = false;
+                if (TitleProblem_TB.Text.Length > 0)
+                    problemNew.Title = TitleProblem_TB.Text;
+                else
+                {
+                    TitleProblem_TB.BorderBrush = new SolidColorBrush(Colors.Red);
+                    result = false;
+                }
+                if (DescriptionProblem_TB.Text.Length > 0)
+                    problemNew.Description = DescriptionProblem_TB.Text;
+                else
+                {
+                    DescriptionProblem_TB.BorderBrush = new SolidColorBrush(Colors.Red);
+                    result = false;
+                }
             }
-            if (DescriptionProblem_TB.Text.Length > 0)
-                problemNew.Description = DescriptionProblem_TB.Text;
             else
             {
-                DescriptionProblem_TB.BorderBrush = new SolidColorBrush(Colors.Red);
-                result = false;
+
+                if (TitleProblem_TB.Text.Length > 0)
+                    problemEdit.Title = TitleProblem_TB.Text;
+                else
+                {
+                    TitleProblem_TB.BorderBrush = new SolidColorBrush(Colors.Red);
+                    result = false;
+                }
+                if (DescriptionProblem_TB.Text.Length > 0)
+                    problemEdit.Description = DescriptionProblem_TB.Text;
+                else
+                {
+                    DescriptionProblem_TB.BorderBrush = new SolidColorBrush(Colors.Red);
+                    result = false;
+                }
             }
             if (result == true)
             {
                 tagProblemList.Add((KnowledgeBaseLibrary.Models.Tag)TagsCB.SelectedValue);
-                KnowledgeBaseLibrary.Classes.Input.InputProblem(problemNew, tagProblemList);
-                problemNew.Id = KnowledgeBaseLibrary.Classes.Get.GetProblemsList().LastOrDefault().Id;
+                if (problemEdit == null)
+                {
+                    KnowledgeBaseLibrary.Classes.Input.InputProblem(problemNew, tagProblemList);
+                    problemNew.Id = KnowledgeBaseLibrary.Classes.Get.GetProblemsList().LastOrDefault().Id;
+                }
+                else
+                {
+                    KnowledgeBaseLibrary.Classes.Input.InputProblem(problemEdit, tagProblemList);
+                }
                 KnowledgeBaseLibrary.Models.Answer answer = (KnowledgeBaseLibrary.Models.Answer)AnswersCB.SelectedItem;
                 Dictionary<KnowledgeBaseLibrary.Models.Solution, List<Step>> solutionList = new();
                 if (answer != null)
@@ -252,14 +313,26 @@ namespace kurukuru.Pages
                                 });
                                 numb++;
                             }
-
-                            solutionList.Add(new Solution()
+                            if (problemEdit == null)
                             {
-                                ProblemId = problemNew.Id,
-                                AnswerId = answer.Id
-                            },
-                            steps
-                            );
+                                solutionList.Add(new Solution()
+                                {
+                                    ProblemId = problemNew.Id,
+                                    AnswerId = answer.Id
+                                },
+                                steps
+                                );
+                            }
+                            else
+                            {
+                                solutionList.Add(new Solution()
+                                {
+                                    ProblemId = problemEdit.Id,
+                                    AnswerId = answer.Id
+                                },
+                                steps
+                                );
+                            }
                         }
 
                         foreach (KeyValuePair<Solution, List<Step>> keyValuePair in solutionList)

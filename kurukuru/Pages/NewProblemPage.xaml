@@ -20,7 +20,7 @@
             <TextBlock Style="{StaticResource ListView.Body}" Text="Шаблон ответа на заявку" FontSize="18"/>
             <ComboBox x:Name="AnswersCB" Style="{StaticResource ComboBoxFlatStyle}" Width="1000" HorizontalAlignment="Left" Margin="0,0,0,10" DisplayMemberPath="Answer1" SelectedValuePath="Id" IsEditable="True" FontSize="18"/>
             <Button Content="Добавить способ решения" Style="{StaticResource ButtonStyle}" Width="250" HorizontalAlignment="Left" Click="AddSolut_Click"/>
-            <ListView x:Name="LS" Grid.Row="1" BorderBrush="Transparent" MaxHeight="350" Style="{StaticResource ListView}"/>
+            <ListView x:Name="LS" Grid.Row="1" BorderBrush="Transparent" MaxHeight="400" Style="{StaticResource ListView}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="SaveBTN" Click="SaveBTN_Click" Content="Сохранить" Style="{StaticResource ButtonStyle}" Height="40" Width="150" Margin="0,0,50,0"/>
