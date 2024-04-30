@@ -31,7 +31,9 @@ namespace kurukuru.Pages
             TitleProblem_TB.Text = problemEdit.Title;
             DescriptionProblem_TB.Text = problemEdit.Description;
             TagsCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetTagsList();
-            TagsCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetTagsByProblem(problemEdit)[0];
+            if (KnowledgeBaseLibrary.Classes.Get.GetTagsByProblem(problemEdit).Count > 0)
+                TagsCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetTagsByProblem(problemEdit)[0];
+
             AnswersCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetAnswersList();
             AnswersCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetAnswerBySolution(KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit)[0]);
             InitSolution();
@@ -131,7 +133,7 @@ namespace kurukuru.Pages
             ListView listView = (ListView)border.Parent;
             listView.Items.Remove(border);
 
-            for(int i = 0; i < listView.Items.Count; i++)
+            for (int i = 0; i < listView.Items.Count; i++)
             {
                 ((TextBlock)((StackPanel)((StackPanel)((Border)listView.Items[i]).Child).Children[0]).Children[0]).Text = $"Решение {i + 1}";
             }
