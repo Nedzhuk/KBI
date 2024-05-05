@@ -121,35 +121,38 @@ namespace kurukuru.Pages
                 List<Solution> popipo = KnowledgeBaseLibrary.Classes.Get.GetSolutionsList().Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).ToList();
 
                 int i = 1;
-                foreach (Solution solution in popipo)
+                if (popipo.Count > 0)
                 {
-                    StackPanel sp = new StackPanel();
-                    sp.Orientation = Orientation.Vertical;
-                    sp.Children.Add(new TextBlock()
+                    foreach (Solution solution in popipo)
                     {
-                        Text = $"Решение {i}",
-                        Style = (Style)Application.Current.FindResource("TextBlock"),
-                        FontWeight = FontWeights.Bold,
-                        Margin = new Thickness(0,10,0,0)
-                    });
-                    List<String> lsl = KnowledgeBaseLibrary.Classes.Get.GetStepsStringList(solution);
-                    List<Step> lss = KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution);
-
-                    int n = 1;
-                    foreach (String s in lsl)
-                    {
+                        StackPanel sp = new StackPanel();
+                        sp.Orientation = Orientation.Vertical;
                         sp.Children.Add(new TextBlock()
                         {
-                            Text = $"{n}. " + s,
+                            Text = $"Решение {i}",
                             Style = (Style)Application.Current.FindResource("TextBlock"),
-                            Margin = new Thickness(10, 0, 0, 0),
-                            MaxWidth = 1000,
-                            TextWrapping = TextWrapping.Wrap
+                            FontWeight = FontWeights.Bold,
+                            Margin = new Thickness(0, 10, 0, 0)
                         });
-                        n++;
+                        List<String> lsl = KnowledgeBaseLibrary.Classes.Get.GetStepsStringList(solution);
+                        List<Step> lss = KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution);
+
+                        int n = 1;
+                        foreach (String s in lsl)
+                        {
+                            sp.Children.Add(new TextBlock()
+                            {
+                                Text = $"{n}. " + s,
+                                Style = (Style)Application.Current.FindResource("TextBlock"),
+                                Margin = new Thickness(10, 0, 0, 0),
+                                MaxWidth = 1000,
+                                TextWrapping = TextWrapping.Wrap
+                            });
+                            n++;
+                        }
+                        stackPanel.Children.Add(sp);
+                        i++;
                     }
-                    stackPanel.Children.Add(sp);
-                    i++;
                 }
                 stackPanel.Children.Add(new TextBlock()
                 {

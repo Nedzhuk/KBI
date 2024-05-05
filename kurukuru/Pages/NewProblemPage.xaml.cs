@@ -35,6 +35,7 @@ namespace kurukuru.Pages
                 TagsCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetTagsByProblem(problemEdit)[0];
 
             AnswersCB.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetAnswersList();
+            if (KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit).Count > 0)
             AnswersCB.SelectedItem = KnowledgeBaseLibrary.Classes.Get.GetAnswerBySolution(KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit)[0]);
             InitSolution();
         }
@@ -78,44 +79,47 @@ namespace kurukuru.Pages
                 stackPanel1.Children.Add(btnD);
                 stackPanel.Children.Add(stackPanel1);
                 ListView listView = new() { Name = "LW" };
-                foreach (Step step in KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution))
+                if (KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution).Count > 0)
                 {
-                    StackPanel sp = new StackPanel();
-                    sp.Name = $"stackPanel{n}";
-                    sp.Orientation = Orientation.Horizontal;
-                    sp.Margin = new Thickness(0, 0, 0, 5);
+                    foreach (Step step in KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution))
+                    {
+                        StackPanel sp = new StackPanel();
+                        sp.Name = $"stackPanel{n}";
+                        sp.Orientation = Orientation.Horizontal;
+                        sp.Margin = new Thickness(0, 0, 0, 5);
 
-                    TextBox txt = new TextBox();
-                    txt.Style = (Style)Application.Current.FindResource("TextBox");
-                    txt.Width = 550;
-                    txt.Margin = new Thickness(0, 0, 10, 0);
-                    txt.Name = $"solution{n}";
-                    txt.Text = step.Action;
+                        TextBox txt = new TextBox();
+                        txt.Style = (Style)Application.Current.FindResource("TextBox");
+                        txt.Width = 550;
+                        txt.Margin = new Thickness(0, 0, 10, 0);
+                        txt.Name = $"solution{n}";
+                        txt.Text = step.Action;
 
-                    ComboBox cb = new ComboBox();
-                    cb.Name = $"comboBox{n}";
-                    cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
-                    cb.Width = 160;
-                    cb.FontSize = 18;
-                    cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
-                    cb.DisplayMemberPath = "Title";
-                    cb.SelectedValuePath = "Id";
-                    cb.SelectedItem = step.SoftId;
+                        ComboBox cb = new ComboBox();
+                        cb.Name = $"comboBox{n}";
+                        cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
+                        cb.Width = 160;
+                        cb.FontSize = 18;
+                        cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
+                        cb.DisplayMemberPath = "Title";
+                        cb.SelectedValuePath = "Id";
+                        cb.SelectedItem = step.SoftId;
 
-                    Button delBtn = new Button();
-                    delBtn.Name = "ButtonDel";
-                    delBtn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-                    delBtn.Content = "❌";
-                    delBtn.Width = 150;
-                    delBtn.Height = 30;
-                    delBtn.Margin = new Thickness(20, 0, 0, 0);
-                    delBtn.Click += DelBtn_Click;
+                        Button delBtn = new Button();
+                        delBtn.Name = "ButtonDel";
+                        delBtn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
+                        delBtn.Content = "❌";
+                        delBtn.Width = 150;
+                        delBtn.Height = 30;
+                        delBtn.Margin = new Thickness(20, 0, 0, 0);
+                        delBtn.Click += DelBtn_Click;
 
-                    sp.Children.Add(txt);
-                    sp.Children.Add(cb);
-                    sp.Children.Add(delBtn);
+                        sp.Children.Add(txt);
+                        sp.Children.Add(cb);
+                        sp.Children.Add(delBtn);
 
-                    listView.Items.Add(sp);
+                        listView.Items.Add(sp);
+                    }
                 }
                 stackPanel.Children.Add(listView);
                 brd.Child = stackPanel;
@@ -290,6 +294,7 @@ namespace kurukuru.Pages
                 else
                 {
                     KnowledgeBaseLibrary.Classes.Input.InputProblem(problemEdit, tagProblemList);
+                    KnowledgeBaseLibrary.Classes.Remove.DeleteSolutionsForProblem(problemEdit);
                 }
                 KnowledgeBaseLibrary.Models.Answer answer = (KnowledgeBaseLibrary.Models.Answer)AnswersCB.SelectedItem;
                 Dictionary<KnowledgeBaseLibrary.Models.Solution, List<Step>> solutionList = new();

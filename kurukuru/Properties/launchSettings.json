@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "kurukuru": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
