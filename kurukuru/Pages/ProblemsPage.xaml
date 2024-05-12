@@ -10,7 +10,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.1*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,20 +22,14 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="Search" MinWidth="700" Margin="0,0,20,0" Style="{StaticResource TextBox}" DataContext="Поиск" TextChanged="Search_TextChanged"/>
+                <TextBox x:Name="Search" MinWidth="700" Margin="0,0,20,0" Style="{StaticResource Search}" DataContext="Поиск" TextChanged="Search_TextChanged"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <ComboBox x:Name="SortCB" MinWidth="200" Margin="0,0,10,0" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="SortCB_SelectionChanged" FontSize="18"/>
-                    <ComboBox x:Name="FiltCB" MinWidth="200" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="FiltCB_SelectionChanged" FontSize="18"/>
+                    <ComboBox x:Name="SortCB" MinWidth="200" Margin="0,0,10,0" Style="{StaticResource ComboBox}" SelectionChanged="SortCB_SelectionChanged" FontSize="18"/>
+                    <ComboBox x:Name="FiltCB" MinWidth="200" Style="{StaticResource ComboBox}" SelectionChanged="FiltCB_SelectionChanged" FontSize="18"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2,2,0,2">
-            <WrapPanel Orientation="Horizontal" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="NewProblemBTN" Content="Новая проблема" Style="{StaticResource ButtonStyle}" Margin="0,0,30,0" Width="150" Click="NewProblemBTN_Click" Height="40"/>
-                <Button x:Name="NewTagBTN" Content="Новый тэг" Style="{StaticResource ButtonStyle}" Width="150" Click="NewTagBTN_Click" Height="40"/>
-            </WrapPanel>
-        </Border>
-        <ListView BorderBrush="Black" BorderThickness="2,0,0,2" Name="ListProblems" Grid.Row="2" Style="{StaticResource ListView}" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
+        <ListView Name="ListProblems" Grid.Row="2" Style="{StaticResource ListView}" BorderBrush="Black" BorderThickness="2" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <ContextMenu.Template>
@@ -57,7 +50,7 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2" x:Name="ListSolution">
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  x:Name="ListSolution">
         </Border>
     </Grid>
 </Page>

@@ -54,21 +54,22 @@ namespace kurukuru.Pages
                 stackPanel1.Children.Add(new TextBlock()
                 {
                     Text = $"Решение {I}",
-                    FontSize = 20,
-                    FontFamily = (FontFamily)(Application.Current.FindResource("Nunito"))
+                    Style = (Style)(Application.Current.FindResource("Title"))
                 });
                 Button btn = new Button();
                 btn.Name = "ButtonAdd";
-                btn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-                btn.Content = "Добавить шаг";
+                btn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+                btn.Content = "Шаг";
+                btn.Uid = AddIcon;
                 btn.Width = 150;
                 btn.Height = 30;
                 btn.Margin = new Thickness(30, 0, 0, 0);
 
                 Button btnD = new Button();
                 btnD.Name = "ButtonDelSolution";
-                btnD.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-                btnD.Content = "Удалить решение";
+                btnD.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+                btnD.Content = "Решение";
+                btnD.Uid = DeleteIcon;
                 btnD.Width = 150;
                 btnD.Height = 30;
                 btnD.Margin = new Thickness(30, 0, 0, 0);
@@ -97,18 +98,23 @@ namespace kurukuru.Pages
 
                         ComboBox cb = new ComboBox();
                         cb.Name = $"comboBox{n}";
-                        cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
+                        cb.Style = (Style)Application.Current.FindResource("ComboBox");
                         cb.Width = 160;
                         cb.FontSize = 18;
                         cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
                         cb.DisplayMemberPath = "Title";
                         cb.SelectedValuePath = "Id";
-                        cb.SelectedItem = step.SoftId;
+
+                        foreach (Soft soft in cb.Items)
+                        {
+                            if (step.SoftId == soft.Id)
+                                cb.SelectedItem = soft;
+                        }
 
                         Button delBtn = new Button();
                         delBtn.Name = "ButtonDel";
-                        delBtn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-                        delBtn.Content = "❌";
+                        delBtn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconOnly"));
+                        delBtn.Content = DeleteIcon;
                         delBtn.Width = 150;
                         delBtn.Height = 30;
                         delBtn.Margin = new Thickness(20, 0, 0, 0);
@@ -164,13 +170,13 @@ namespace kurukuru.Pages
             stackPanel1.Children.Add(new TextBlock()
             {
                 Text = $"Решение {I}",
-                FontSize = 20,
-                FontFamily = (FontFamily)(Application.Current.FindResource("Nunito"))
-            });
+                Style = (Style)(Application.Current.FindResource("Title"))
+        });
             Button btn = new Button();
             btn.Name = "ButtonAdd";
-            btn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-            btn.Content = "Добавить шаг";
+            btn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+            btn.Content = "Шаг";
+            btn.Uid = AddIcon;
             btn.Width = 150;
             btn.Height = 30;
             btn.Margin = new Thickness(30, 0, 0, 0);
@@ -178,8 +184,9 @@ namespace kurukuru.Pages
 
             Button btnD = new Button();
             btnD.Name = "ButtonDelSolution";
-            btnD.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-            btnD.Content = "Удалить решение";
+            btnD.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+            btnD.Content = "Решение";
+            btnD.Uid = DeleteIcon;
             btnD.Width = 150;
             btnD.Height = 30;
             btnD.Margin = new Thickness(30, 0, 0, 0);
@@ -211,7 +218,7 @@ namespace kurukuru.Pages
 
             ComboBox cb = new ComboBox();
             cb.Name = $"comboBox{n}";
-            cb.Style = (Style)Application.Current.FindResource("ComboBoxFlatStyle");
+            cb.Style = (Style)Application.Current.FindResource("ComboBox");
             cb.Width = 160;
             cb.FontSize = 18;
             cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
@@ -220,8 +227,9 @@ namespace kurukuru.Pages
 
             Button delBtn = new Button();
             delBtn.Name = "ButtonDel";
-            delBtn.Style = (Style)(Application.Current.FindResource("ButtonStyle"));
-            delBtn.Content = "❌";
+            delBtn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconOnly"));
+            //delBtn.Content = "❌";
+            delBtn.Content = DeleteIcon;
             delBtn.Width = 150;
             delBtn.Height = 30;
             delBtn.Margin = new Thickness(20, 0, 0, 0);
@@ -348,7 +356,6 @@ namespace kurukuru.Pages
                         }
                         MessageBox.Show("Запись создана.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                         FrameClass.FrameKBI.Navigate(new ProblemsPage());
-
                     }
                     else
                         MessageBox.Show("Нет решения проблемы.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -9,5 +9,28 @@
         FontSize="18"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized" Icon="/Resources/Images/KnowledgeBase.png">
-    <Frame x:Name="frameMW" NavigationUIVisibility="Hidden"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+             Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition
+                 Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Height="48" Orientation="Horizontal">
+                <Button x:Name="Add" Content="&#xE710;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Add_Click"/>
+                <Button x:Name="Edit" Content="&#xE70F;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Edit_Click"/>
+                <Button x:Name="Delete" Content="&#xE74D;" Style="{DynamicResource Button.Standart.IconOnly}"/>
+                <GridSplitter BorderBrush="{DynamicResource Light.StrokeColor.DividerStroke.Default}" BorderThickness="1" IsEnabled="False" Margin="0,4" Width="1"/>
+                <Button x:Name="Tags" Content="Тэги" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE8EC;" Click="Tags_Click"/>
+                <Button x:Name="Softs" Content="Системы" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE737;" Click="Softs_Click"/>
+                <Button x:Name="Answers" Content="Ответы" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE8F2;" Click="Answers_Click"/>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="frameMW" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+    </Grid>
 </Window>

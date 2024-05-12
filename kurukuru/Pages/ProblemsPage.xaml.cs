@@ -36,32 +36,6 @@ namespace kurukuru.Pages
         {
             FrameClass.FrameKBI.Navigate(new NewProblemPage());
         }
-
-        private void NewProblemBTN_Click(object sender, RoutedEventArgs e)
-        {
-            FrameClass.FrameKBI.Navigate(new NewProblemPage());
-        }
-
-        private void NewTagBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NewTag windowNT = new NewTag();
-            windowNT.Show();
-            windowNT.Closed += WindowNT_Closed;
-        }
-
-        private void WindowNT_Closed(object sender, EventArgs e)
-        {
-            filtList.Clear();
-            filtList.Add(new Tag() { Title = "Без фильтрации" });
-            foreach (Tag tag in KnowledgeBaseLibrary.Classes.Get.GetTagsList())
-            {
-                filtList.Add(tag);
-            }
-            FiltCB.ItemsSource = null;
-            FiltCB.ItemsSource = filtList;
-            FiltCB.SelectedIndex = 0;
-        }
-
         private void MenuItemChange_Loaded(object sender, RoutedEventArgs e)
         {
             MenuItem mi = (MenuItem)sender;
@@ -91,6 +65,7 @@ namespace kurukuru.Pages
         {
             if (ListProblems.SelectedItems.Count > 0)
             {
+                SelectedProblem.problem = (Problem)ListProblems.SelectedItem;
                 StackPanel stackPanel = new StackPanel();
                 stackPanel.Orientation = Orientation.Vertical;
                 stackPanel.Margin = new Thickness(30);
@@ -98,15 +73,14 @@ namespace kurukuru.Pages
                 {
                     Text = ((Problem)ListProblems.SelectedItem).Title,
                     Name = "TitleTB",
-                    Style = (Style)Application.Current.FindResource("TextBlock"),
-                    TextDecorations = TextDecorations.Underline,
+                    Style = (Style)Application.Current.FindResource("Title"),
                     Margin = new Thickness(0, 0, 0, 5)
                 });
                 stackPanel.Children.Add(new TextBlock()
                 {
                     Text = ((Problem)ListProblems.SelectedItem).Description,
                     Name = "DescriptionTB",
-                    Style = (Style)Application.Current.FindResource("TextBlock"),
+                    Style = (Style)Application.Current.FindResource("Body"),
                     Foreground = (Brush)new BrushConverter().ConvertFrom("#3b3b3b"),
                     MaxWidth = 1000,
                     TextWrapping = TextWrapping.Wrap
@@ -115,7 +89,7 @@ namespace kurukuru.Pages
                 {
                     Text = $"Тэг: {(new _43pKnowledgeBaseContext().TagProblems.Include(x => x.Tag).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault() != null ? new _43pKnowledgeBaseContext().TagProblems.Include(x => x.Tag).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault().Tag.Title : "Не выбран")}",
                     Name = "TagTB",
-                    Style = (Style)Application.Current.FindResource("TextBlock")
+                    Style = (Style)Application.Current.FindResource("Body")
                 });
                 ListView LV = new ListView();
                 List<Solution> popipo = KnowledgeBaseLibrary.Classes.Get.GetSolutionsList().Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).ToList();
@@ -130,8 +104,7 @@ namespace kurukuru.Pages
                         sp.Children.Add(new TextBlock()
                         {
                             Text = $"Решение {i}",
-                            Style = (Style)Application.Current.FindResource("TextBlock"),
-                            FontWeight = FontWeights.Bold,
+                            Style = (Style)Application.Current.FindResource("Subtitle"),
                             Margin = new Thickness(0, 10, 0, 0)
                         });
                         List<String> lsl = KnowledgeBaseLibrary.Classes.Get.GetStepsStringList(solution);
@@ -143,7 +116,7 @@ namespace kurukuru.Pages
                             sp.Children.Add(new TextBlock()
                             {
                                 Text = $"{n}. " + s,
-                                Style = (Style)Application.Current.FindResource("TextBlock"),
+                                Style = (Style)Application.Current.FindResource("Body"),
                                 Margin = new Thickness(10, 0, 0, 0),
                                 MaxWidth = 1000,
                                 TextWrapping = TextWrapping.Wrap
@@ -158,7 +131,7 @@ namespace kurukuru.Pages
                 {
                     Text = $"*Шаблон решения: {(new _43pKnowledgeBaseContext().Solutions.Include(x => x.Answer).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault() != null ? new _43pKnowledgeBaseContext().Solutions.Include(x => x.Answer).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault().Answer.Answer1 : "Не выбран")}",
                     Name = "AnswerTB",
-                    Style = (Style)Application.Current.FindResource("TextBlock"),
+                    Style = (Style)Application.Current.FindResource("Body"),
                     Margin = new Thickness(0, 10, 0, 0),
                     MaxWidth = 1000,
                     TextWrapping = TextWrapping.Wrap

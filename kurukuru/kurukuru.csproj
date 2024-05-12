@@ -34,7 +34,27 @@
 
   <ItemGroup>
     <Using Include="KnowledgeBaseLibrary.Models" />
+    <Using Include="kurukuru.Pages" />
+    <Using Include="kurukuru.Properties.Resources">
+      <Static>True</Static>
+    </Using>
+    <Using Include="kurukuru._Windows" />
     <Using Include="System.Windows" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
