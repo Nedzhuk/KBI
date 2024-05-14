@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:kurukuru._Windows"
         mc:Ignorable="d"
         d:DesignHeight="500"
-        Title="TagsWindow"
+        Title="Тэги"
         d:DesignWidth="500"
         Height="500"
         Width="500"
+        Background="{StaticResource Light.FillColor.System.SolidAttentionBackground}"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded" 
+        Icon="/Resources/Images/IconTagWindow.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition

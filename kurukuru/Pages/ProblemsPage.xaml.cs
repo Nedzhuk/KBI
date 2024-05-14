@@ -23,7 +23,7 @@ namespace kurukuru.Pages
             {
                 filtList.Add(tag);
             }
-            ListProblems.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetProblemsList();
+            ListProblems.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetActualProblemsList();
             ListProblems.DisplayMemberPath = "Title";
             SortCB.ItemsSource = sortList;
             SortCB.SelectedIndex = 0;
@@ -147,15 +147,16 @@ namespace kurukuru.Pages
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult mbr = MessageBox.Show("Удалить запись?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (mbr == MessageBoxResult.Yes)
-            {
-                KnowledgeBaseLibrary.Classes.Remove.DeleteProblem((Problem)ListProblems.SelectedItem);
-                MessageBox.Show("Запись удалена.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                ListProblems.ItemsSource = null;
-                ListProblems.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetProblemsList();
-                ListSolution.Child = null;
-            }
+            MessageWindow messageWindow = new MessageWindow((Problem)ListProblems.SelectedValue);
+            messageWindow.Show();
+            messageWindow.Closed += MessageWindow_Closed;
+        }
+
+        private void MessageWindow_Closed(object? sender, EventArgs e)
+        {
+            ListProblems.ItemsSource = null;
+            ListProblems.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetActualProblemsList();
+            ListSolution.Child = null;
         }
 
         private void SortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -169,7 +170,7 @@ namespace kurukuru.Pages
         }
         private void Setting()
         {
-            List<Problem> tmp = KnowledgeBaseLibrary.Classes.Get.GetProblemsList();
+            List<Problem> tmp = KnowledgeBaseLibrary.Classes.Get.GetActualProblemsList();
             if (FiltCB.SelectedIndex > 0)
                 tmp = KnowledgeBaseLibrary.Classes.Sort.FilterProblemsByTag(tmp, (Tag)FiltCB.SelectedItem);
             if (SortCB.SelectedIndex == 1)

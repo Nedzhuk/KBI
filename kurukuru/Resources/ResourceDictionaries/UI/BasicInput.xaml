@@ -4,86 +4,32 @@
     <Style
         x:Key="Button.Accent.TextOnly"
         TargetType="{x:Type Button}">
-        <Setter
-            Property="Background"
-            Value="{DynamicResource Light.FillColor.Accent.Default}"/>
-        <Setter
-            Property="BorderBrush"
-            Value="{DynamicResource Light.Elevation.AccentControl.Border}"/>
-        <Setter
-            Property="BorderThickness"
-            Value="1"/>
-        <Setter
-            Property="FocusVisualStyle"
-            Value="{DynamicResource FocusRect}"/>
-        <Setter
-            Property="FontFamily"
-            Value="Segoe UI Variable Static Display"/>
-        <Setter
-            Property="FontSize"
-            Value="14"/>
-        <Setter
-            Property="Foreground"
-            Value="{DynamicResource Ligth.FillColor.TextOnAccent.Primary}"/>
-        <Setter
-            Property="Height"
-            Value="32"/>
-        <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center"/>
-        <Setter
-            Property="Margin"
-            Value="4"/>
-        <Setter
-            Property="MaxHeight"
-            Value="32"/>
-        <Setter
-            Property="MaxWidth"
-            Value="120"/>
-        <Setter
-            Property="Padding"
-            Value="12,6"/>
-        <Setter
-            Property="Template">
+        <Setter Property="Background" Value="{DynamicResource Light.FillColor.Accent.Default}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Light.Elevation.AccentControl.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusRect}"/>
+        <Setter Property="FontFamily" Value="Segoe UI Variable Static Display"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{DynamicResource Ligth.FillColor.TextOnAccent.Primary}"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="MaxHeight" Value="32"/>
+        <Setter Property="MaxWidth" Value="120"/>
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="{x:Type Button}">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}" 
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4"
-                        SnapsToDevicePixels="True">
-                        <ContentPresenter
-                            x:Name="ContentPresenter"
-                            Focusable="False"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Margin="{TemplateBinding Padding}"
-                            RecognizesAccessKey="True"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger
-                            Property="IsMouseOver"
-                            Value="True">
-                            <Setter
-                                Property="Background"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.FillColor.Accent.Secondary}"/>
-                            <Setter
-                                Property="BorderBrush"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.Elevation.AccentControl.Border}"/>
-                            <Setter
-                                Property="TextElement.Foreground"
-                                TargetName="ContentPresenter"
-                                Value="{DynamicResource Ligth.FillColor.TextOnAccent.Primary}"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Light.FillColor.Accent.Secondary}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Light.Elevation.AccentControl.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{DynamicResource Ligth.FillColor.TextOnAccent.Primary}"/>
                         </Trigger>
-                        <Trigger
-                            Property="IsPressed"
-                            Value="True">
+                        <Trigger Property="IsPressed" Value="True">
                             <Setter
                                 Property="Background"
                                 TargetName="Border"
@@ -124,68 +70,27 @@
             Property="Width"
             Value="120"/>
     </Style>
-    <Style
-        x:Key="Button.Standart.TextOnly"
-        TargetType="{x:Type Button}">
-        <Setter
-            Property="Background"
-            Value="{DynamicResource Light.FillColor.Control.Default}"/>
-        <Setter
-            Property="BorderBrush"
-            Value="{DynamicResource Light.Elevation.Control.Border}"/>
-        <Setter
-            Property="BorderThickness"
-            Value="1"/>
-        <Setter
-            Property="FocusVisualStyle"
-            Value="{DynamicResource FocusRect}"/>
-        <Setter
-            Property="FontFamily"
-            Value="Segoe UI Variable Static Display"/>
-        <Setter
-            Property="FontSize"
-            Value="14"/>
-        <Setter
-            Property="Foreground"
-            Value="{DynamicResource Light.FillColor.Text.Primary}"/>
-        <Setter
-            Property="Height"
-            Value="32"/>
-        <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center"/>
-        <Setter
-            Property="Margin"
-            Value="4"/>
-        <Setter
-            Property="MaxHeight"
-            Value="32"/>
-        <Setter
-            Property="MaxWidth"
-            Value="120"/>
-        <Setter
-            Property="Padding"
-            Value="12,6"/>
-        <Setter
-            Property="Template">
+    <Style x:Key="Button.Standart.TextOnly" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Light.FillColor.Control.Default}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Light.Elevation.Control.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusRect}"/>
+        <Setter Property="FontFamily" Value="Segoe UI Variable Static Display"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{DynamicResource Light.FillColor.Text.Primary}"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="MaxHeight" Value="32"/>
+        <Setter Property="MaxWidth" Value="120"/>
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate
                     TargetType="{x:Type Button}">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}" 
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4"
-                        SnapsToDevicePixels="True">
-                        <ContentPresenter
-                            x:Name="ContentPresenter"
-                            Focusable="False"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Margin="{TemplateBinding Padding}"
-                            RecognizesAccessKey="True"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger
@@ -734,53 +639,20 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger
-                            Property="IsMouseOver"
-                            Value="True">
-                            <Setter
-                                Property="Background"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.FillColor.Control.Secondary}"/>
-                            <Setter
-                                Property="BorderBrush"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.Elevation.Control.Border}"/>
-                            <Setter
-                                Property="TextElement.Foreground"
-                                TargetName="ContentPresenter"
-                                Value="{DynamicResource Light.FillColor.Text.Primary}"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Light.FillColor.Control.Secondary}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Light.Elevation.Control.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{DynamicResource Light.FillColor.Text.Primary}"/>
                         </Trigger>
-                        <Trigger
-                            Property="IsPressed"
-                            Value="True">
-                            <Setter
-                                Property="Background"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.FillColor.Control.Tertiary}"/>
-                            <Setter
-                                Property="BorderBrush"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.StrokeColor.ControlStroke.Default}"/>
-                            <Setter
-                                Property="TextElement.Foreground"
-                                TargetName="ContentPresenter"
-                                Value="{DynamicResource Light.FillColor.Text.Secondary}"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Light.FillColor.Control.Tertiary}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Light.StrokeColor.ControlStroke.Default}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{DynamicResource Light.FillColor.Text.Secondary}"/>
                         </Trigger>
-                        <Trigger
-                            Property="IsEnabled"
-                            Value="False">
-                            <Setter
-                                Property="Background"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.FillColor.Control.Disabled}"/>
-                            <Setter
-                                Property="BorderBrush"
-                                TargetName="Border"
-                                Value="{DynamicResource Light.StrokeColor.ControlStroke.Default}"/>
-                            <Setter
-                                Property="TextElement.Foreground"
-                                TargetName="ContentPresenter"
-                                Value="{DynamicResource Light.FillColor.Text.Disabled}"/>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Light.FillColor.Control.Disabled}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Light.StrokeColor.ControlStroke.Default}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="ContentPresenter" Value="{DynamicResource Light.FillColor.Text.Disabled}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -945,4 +817,77 @@
         <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBox.Item}"/>
         <Setter Property="Template" Value="{StaticResource ComboBox.Editable}"/>
     </Style>
+    <Style x:Key="chkBullet" TargetType="CheckBox">
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Border Width="60" Height="20" CornerRadius="10" Background="{TemplateBinding Background}" >
+                        <Grid>
+                            <Border x:Name="border" Width="18" Height="18" CornerRadius="9" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="1 0" Background="White">
+                                <Border.RenderTransform>
+                                    <TranslateTransform  X="0"/>
+                                </Border.RenderTransform>
+                            </Border>
+                            <TextBlock x:Name="txt" Text="{TemplateBinding Content}" Margin="9 0" VerticalAlignment="Center" Foreground="White" >
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform   X="18"></TranslateTransform>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Text" TargetName="txt" Value="{Binding Tag,RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="40" Duration="00:00:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="18" Duration="00:00:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Text" TargetName="txt" Value="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CheckBox" TargetType="CheckBox">
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <DockPanel  Background="{TemplateBinding Background}" ToolTip="{TemplateBinding Content}" LastChildFill="False" Width="{TemplateBinding Width}">
+                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" x:Name="_img"  Stretch="None" Source="/Resources/Images/check_none.png"/>
+                        <TextBlock DockPanel.Dock="Left" Foreground="{TemplateBinding Foreground}" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="_img" Property="Source" Value="/Resources/Images/check_yes.png"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="_img" Property="Source" Value="/Resources/Images/check_none.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

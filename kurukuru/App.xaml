@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="/Resources/ResourceDictionaries/UI/Primitives.xaml"/>
                 <ResourceDictionary Source="/Resources/ResourceDictionaries/UI/Scrolling.xaml"/>
                 <ResourceDictionary Source="/Resources/ResourceDictionaries/UI/TextFields.xaml"/>
+                <ResourceDictionary Source="/Resources/ResourceDictionaries/UI/Window.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

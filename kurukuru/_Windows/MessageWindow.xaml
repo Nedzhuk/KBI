@@ -1,0 +1,36 @@
+﻿<Window x:Class="kurukuru._Windows.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurukuru._Windows"
+        mc:Ignorable="d"
+        Title="Подтверждение" Height="300" Width="400"
+        Icon="/Resources/Images/IconMessageWindow.png"
+        ResizeMode="NoResize"
+        Background="{StaticResource Light.FillColor.System.SolidAttentionBackground}"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.4*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Name="TextMessageTB" Style="{StaticResource Body}" Margin="20,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0,0,0,10">
+            <CheckBox Style="{StaticResource CheckBox}"/>
+            <TextBlock Style="{StaticResource Subtitle}" Text="Больше не показывать" Margin="10,0,0,0"/>
+        </StackPanel>
+        <Border Style="{DynamicResource Window.ButtonSurface}" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource Button.Accent.TextOnly}" Grid.Row="1" Content="Да" x:Name="ResultYes" Click="ResultYes_Click"/>
+                <Button Style="{StaticResource Button.Standart.TextOnly}" Grid.Row="1" Grid.Column="1" Content="Нет" x:Name="ResultNo" Click="ResultNo_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

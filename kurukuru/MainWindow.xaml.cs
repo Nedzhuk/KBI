@@ -22,10 +22,10 @@ namespace kurukuru
             Tags.Style = (Style)Application.Current.FindResource("Button.Accent.IconBefore");
             TagWindow tagWindow = new TagWindow();
             tagWindow.Show();
-            tagWindow.Closed += TagWindow_Closed;
+            tagWindow.Closed += Window_Closed;
         }
 
-        private void TagWindow_Closed(object? sender, EventArgs e)
+        private void Window_Closed(object? sender, EventArgs e)
         {
             Reset();
         }
@@ -34,13 +34,18 @@ namespace kurukuru
         {
             Reset();
             Softs.Style = (Style)Application.Current.FindResource("Button.Accent.IconBefore");
+            SoftWindow softWindow = new SoftWindow();
+            softWindow.Show();
+            softWindow.Closed += Window_Closed;
         }
 
         private void Answers_Click(object sender, RoutedEventArgs e)
         {
             Reset();
             Answers.Style = (Style)Application.Current.FindResource("Button.Accent.IconBefore");
-            FrameClass.FrameKBI.Navigate(new ProblemsPage());
+            AnswerWindow answerWindow = new AnswerWindow();
+            answerWindow.Show();
+            answerWindow.Closed += Window_Closed;
         }
         private void Reset()
         {
@@ -76,6 +81,20 @@ namespace kurukuru
                 NewProblemPage editProblemPage = new(problemEdit);
                 FrameClass.FrameKBI.Navigate(editProblemPage);
                 editProblemPage.Unloaded += NewProblemPage_Unloaded;
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedProblem.problem != null)
+            {
+                Reset();
+                Delete.Style = (Style)Application.Current.FindResource("Button.Accent.IconOnly");
+                Problem problemDelete = SelectedProblem.problem;
+                NewProblemPage editProblemPage = new(problemDelete);
+                MessageWindow messageWindow = new MessageWindow(problemDelete);
+                messageWindow.Show();
+                messageWindow.Closed += Window_Closed;
             }
         }
     }

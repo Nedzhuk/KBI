@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\check_none.png" />
+    <None Remove="Resources\Images\check_yes.png" />
     <None Remove="Resources\Images\Delete.png" />
+    <None Remove="Resources\Images\IconAnswerWindow.png" />
+    <None Remove="Resources\Images\IconMessageWindow.png" />
+    <None Remove="Resources\Images\IconSoftWindow.png" />
+    <None Remove="Resources\Images\IconTagWindow.png" />
     <None Remove="Resources\Images\KnowledgeBase.png" />
   </ItemGroup>
 
@@ -28,7 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\check_none.png" />
+    <Resource Include="Resources\Images\check_yes.png" />
     <Resource Include="Resources\Images\Delete.png" />
+    <Resource Include="Resources\Images\IconAnswerWindow.png" />
+    <Resource Include="Resources\Images\IconMessageWindow.png" />
+    <Resource Include="Resources\Images\IconSoftWindow.png" />
+    <Resource Include="Resources\Images\IconTagWindow.png" />
     <Resource Include="Resources\Images\KnowledgeBase.png" />
   </ItemGroup>
 
