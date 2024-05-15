@@ -30,6 +30,8 @@
                 <Button x:Name="Tags" Content="Тэги" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE8EC;" Click="Tags_Click"/>
                 <Button x:Name="Softs" Content="Системы" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE737;" Click="Softs_Click"/>
                 <Button x:Name="Answers" Content="Ответы" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE8F2;" Click="Answers_Click"/>
+                <GridSplitter BorderBrush="{DynamicResource Light.StrokeColor.DividerStroke.Default}" BorderThickness="1" IsEnabled="False" Margin="0,4" Width="1"/>
+                <Button x:Name="Basket" Content="Корзина" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xe8a9;" Click="Basket_Click"/>
             </StackPanel>
         </Grid>
         <Frame x:Name="frameMW" NavigationUIVisibility="Hidden" Grid.Row="1"/>

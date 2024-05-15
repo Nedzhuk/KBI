@@ -14,16 +14,13 @@
         Loaded="Window_Loaded" Icon="/Resources/Images/IconAnswerWindow.png">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition
-             Height="Auto"/>
-            <RowDefinition
-              x:Name="RowDefinition"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition x:Name="RowDefinition"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition
-                 Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Height="48" Orientation="Horizontal">
                 <Button x:Name="Add" Content="&#xE710;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Add_Click"/>

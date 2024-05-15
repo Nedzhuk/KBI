@@ -1,0 +1,39 @@
+﻿<Window x:Class="kurukuru._Windows.BasketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurukuru._Windows"
+        mc:Ignorable="d"
+        Title="Корзина"
+        d:DesignWidth="500"
+        Height="500"
+        Width="500"
+        Background="{StaticResource Light.FillColor.System.SolidAttentionBackground}"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/Images/IconAnswerWindow.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Recover" Content="Восстановить" Style="{DynamicResource Button.Standart.TextOnly}" Click="Recover_Click" HorizontalAlignment="Right"/>
+        <ListView Grid.Row="1" x:Name="BasketLV" Style="{StaticResource ListView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Style="{StaticResource Body}" Text="{Binding Title}"/>
+                            <TextBlock Style="{StaticResource Subtitle}" Uid="{Binding Id}" x:Name="DateDeleted" Loaded="DateDeleted_Loaded" Margin="15,5,0,0"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Style="{StaticResource Body}" Uid="{Binding Id}" Loaded="TextBlock_Loaded" x:Name="DateForDelete" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

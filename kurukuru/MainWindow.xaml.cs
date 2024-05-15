@@ -1,5 +1,5 @@
 ﻿using kurukuru.Classes;
-using System.Windows.Controls;
+using kurukuru.Pages;
 
 namespace kurukuru
 {
@@ -52,6 +52,7 @@ namespace kurukuru
             Answers.Style = (Style)Application.Current.FindResource("Button.Standart.IconBefore");
             Softs.Style = (Style)Application.Current.FindResource("Button.Standart.IconBefore");
             Tags.Style = (Style)Application.Current.FindResource("Button.Standart.IconBefore");
+            Basket.Style = (Style)Application.Current.FindResource("Button.Standart.IconBefore");
             Add.Style = (Style)Application.Current.FindResource("Button.Standart.IconOnly");
             Edit.Style = (Style)Application.Current.FindResource("Button.Standart.IconOnly");
             Delete.Style = (Style)Application.Current.FindResource("Button.Standart.IconOnly");
@@ -94,8 +95,23 @@ namespace kurukuru
                 NewProblemPage editProblemPage = new(problemDelete);
                 MessageWindow messageWindow = new MessageWindow(problemDelete);
                 messageWindow.Show();
-                messageWindow.Closed += Window_Closed;
+                messageWindow.Closed += UpdateWindow_Closed;
             }
+        }
+
+        private void Basket_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();
+            Basket.Style = (Style)Application.Current.FindResource("Button.Accent.IconBefore");
+            BasketWindow basketWindow = new BasketWindow();
+            basketWindow.Show();
+            basketWindow.Closed += UpdateWindow_Closed;
+        }
+
+        private void UpdateWindow_Closed(object? sender, EventArgs e)
+        {
+            Reset();
+            FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
     }
 }
