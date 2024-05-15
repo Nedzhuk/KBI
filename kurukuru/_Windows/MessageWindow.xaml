@@ -19,7 +19,7 @@
             <TextBlock x:Name="TextMessageTB" Style="{StaticResource Body}" Margin="20,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0,0,0,10">
-            <CheckBox Style="{StaticResource CheckBox}"/>
+            <CheckBox Style="{StaticResource CheckBox}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
             <TextBlock Style="{StaticResource Subtitle}" Text="Больше не показывать" Margin="10,0,0,0"/>
         </StackPanel>
         <Border Style="{DynamicResource Window.ButtonSurface}" Grid.Row="1" Grid.ColumnSpan="2">

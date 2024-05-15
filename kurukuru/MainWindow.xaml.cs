@@ -1,5 +1,6 @@
 ﻿using kurukuru.Classes;
 using kurukuru.Pages;
+using System.IO;
 
 namespace kurukuru
 {
@@ -92,10 +93,21 @@ namespace kurukuru
                 Reset();
                 Delete.Style = (Style)Application.Current.FindResource("Button.Accent.IconOnly");
                 Problem problemDelete = SelectedProblem.problem;
-                NewProblemPage editProblemPage = new(problemDelete);
-                MessageWindow messageWindow = new MessageWindow(problemDelete);
-                messageWindow.Show();
-                messageWindow.Closed += UpdateWindow_Closed;
+
+                string sett = File.ReadAllText(".\\Settings\\WindowDisplay.txt");
+                if(sett == "false")
+                {
+                    NewProblemPage editProblemPage = new(problemDelete);
+                    MessageWindow messageWindow = new MessageWindow(problemDelete);
+                    messageWindow.Show();
+                    messageWindow.Closed += UpdateWindow_Closed;
+                }
+                else
+                {
+                    KnowledgeBaseLibrary.Classes.Remove.DeleteProblem(problemDelete);
+                    Reset();
+                    FrameClass.FrameKBI.Navigate(new ProblemsPage());
+                }
             }
         }
 

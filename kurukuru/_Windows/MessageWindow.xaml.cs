@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,16 @@ namespace kurukuru._Windows
         private void ResultNo_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(".\\Settings\\WindowDisplay.txt", "true");
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(".\\Settings\\WindowDisplay.txt", "false");
         }
     }
 }
