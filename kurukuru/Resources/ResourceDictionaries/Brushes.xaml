@@ -166,33 +166,33 @@
     <SolidColorBrush x:Key="Light.Shell.Background.FillColor.LayerOnAcrylic.Default" Color="#40FFFFFF"/>
     <SolidColorBrush x:Key="Light.Shell.Background.FillColor.AcrylicBackground.Thin" Color="#99D3D3D3"/>
 
-    <SolidColorBrush x:Key="Dark.FillColor.Text.Primary" Color="#E4000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Text.Primary" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Dark.Background.FillColor.Default" Color="#FFF"/>
     <SolidColorBrush x:Key="Dark.Background.FillColor.MicaBackground" Color="#F3F3F3"/>
     <SolidColorBrush x:Key="Dark.StrokeColor.SurfaceStroke" Color="#757575"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Text.Secondary" Color="#9B000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Text.Tertiary" Color="#72000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Text.Secondary" Color="#78FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Text.Tertiary" Color="#36FFFFFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.Text.Disabled" Color="#5C000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Primary" Color="#003E92"/>
-    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Secondary" Color="#001A68"/>
-    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Tertiary" Color="#005FB8"/>
-    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Disabled" Color="#5C000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.Primary" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.Secondary" Color="#B2FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.Disabled" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Primary" Color="#99EBFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Secondary" Color="#99EBFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Tertiary" Color="#60CDFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.AccentText.Disabled" Color="#36FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.Primary" Color="#000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.Secondary" Color="#50000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.Disabled" Color="#50000000"/>
     <SolidColorBrush x:Key="Dark.FillColor.TextOnAccent.SelectedText" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.Default" Color="#B2FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.Secondary" Color="#80F9F9F9"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.Tertiary" Color="#4DF9F9F9"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.Quarternary" Color="#C2F3F3F3"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.Disabled" Color="#4DF9F9F9"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.Transparent" Color="#00FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Control.InputActive" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Transparent" Color="#00FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Secondary" Color="#06000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Tertiary" Color="#0F000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Quarternary" Color="#18000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Disabled" Color="#00FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.Default" Color="#20FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.Secondary" Color="#08FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.Tertiary" Color="#03FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.Quarternary" Color="#06FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.Disabled" Color="#04FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.Transparent" Color="#00000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Control.InputActive" Color="#701E1E1E"/>
+    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Transparent" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Secondary" Color="#10000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Tertiary" Color="#04FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Quarternary" Color="#06FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.ControlAlt.Disabled" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.ControlSolid.Default" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.ControlStrong.Default" Color="#72000000"/>
     <SolidColorBrush x:Key="Dark.FillColor.ControlStrong.Disabled" Color="#51000000"/>
@@ -269,19 +269,19 @@
     <SolidColorBrush x:Key="Dark.Background.FillColor.AcrylicBackground.Default" Color="#D9FCFCFC"/>
     <SolidColorBrush x:Key="Dark.Background.FillColor.AccentAcrylicBackground.Base" Color="#E599EBFF"/>
     <SolidColorBrush x:Key="Dark.Background.FillColor.AccentAcrylicBackground.Default" Color="#CC99EBFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.Attention" Color="#005FB7"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.Success" Color="#0F7B0F"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.Caution" Color="#9D5D00"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.Critical" Color="#C42B1C"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.Neutral" Color="#72000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.Attention" Color="#60CDFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.Success" Color="#6CCB5F"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.Caution" Color="#FCE100"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.Critical" Color="#FF99A4"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.Neutral" Color="#54FFFFFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.System.SolidNeutral" Color="#8A8A8A"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.AttentionBackground" Color="#80F6F6F6"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.SuccessBackground" Color="#DFF6DD"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.CautionBackground" Color="#FFF4CE"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.CriticalBackground" Color="#FDE7E9"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.NeutralBackground" Color="#06000000"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.SolidNeutralBackground" Color="#F3F3F3"/>
-    <SolidColorBrush x:Key="Dark.FillColor.System.SolidAttentionBackground" Color="#F7F7F7"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.AttentionBackground" Color="#03FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.SuccessBackground" Color="#393D1B"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.CautionBackground" Color="#433519"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.CriticalBackground" Color="#442726"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.NeutralBackground" Color="#03FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.SolidNeutralBackground" Color="#2E2E2E"/>
+    <SolidColorBrush x:Key="Dark.FillColor.System.SolidAttentionBackground" Color="#2E2E2E"/>
     <SolidColorBrush x:Key="Dark.Shell.FillColor.CaptionCloseText.Primary" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="Dark.Shell.FillColor.CaptionCloseText.Secondary" Color="#B2FFFFFF"/>
     <SolidColorBrush x:Key="Dark.Shell.FillColor.IllustrationOnAcrylic.Primary" Color="#1A000000"/>
@@ -320,17 +320,17 @@
         <GradientStop Color="#05000000" Offset="0.9464"/>
         <GradientStop Color="#0F000000" Offset="1"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.IllustrationOnAcrylicStrong.Primary" Color="#70000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.KeyboardButton.Primary" Color="#0F000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.KeyboardButton.Secondary" Color="#29000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Primary" Color="#17000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Secondary" Color="#0F000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Tertiary" Color="#08000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Quarternary" Color="#05000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Quinary" Color="#05000000"/>
-    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.CardBackgroundOnThinAcrylic.Default" Color="#E5F6F6F6"/>
-    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.CardBackgroundOnThinAcrylic.Secondary" Color="#F9F9F9"/>
-    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.LayerOnAcrylic.Default" Color="#40FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.AcrylicBackground.Thin" Color="#99D3D3D3"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.IllustrationOnAcrylicStrong.Primary" Color="#40FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.KeyboardButton.Primary" Color="#15000000"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.KeyboardButton.Secondary" Color="#30000000"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Primary" Color="#12FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Secondary" Color="#10FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Tertiary" Color="#15FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Quarternary" Color="#06FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.StrokeColor.TaskbarItemStroke.Quinary" Color="#04FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.CardBackgroundOnThinAcrylic.Default" Color="#65000000"/>
+    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.CardBackgroundOnThinAcrylic.Secondary" Color="#52000000"/>
+    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.LayerOnAcrylic.Default" Color="#04FFFFFF"/>
+    <SolidColorBrush x:Key="Dark.Shell.Background.FillColor.AcrylicBackground.Thin" Color="#65000000"/>
 
 </ResourceDictionary>

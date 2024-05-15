@@ -50,7 +50,7 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  x:Name="ListSolution">
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" x:Name="ListSolution">
         </Border>
     </Grid>
 </Page>

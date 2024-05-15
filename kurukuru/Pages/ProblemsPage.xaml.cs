@@ -138,6 +138,7 @@ namespace kurukuru.Pages
                 });
                 ListSolution.Child = stackPanel;
             }
+            SelectedProblem.borderProblem = ListSolution;
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
