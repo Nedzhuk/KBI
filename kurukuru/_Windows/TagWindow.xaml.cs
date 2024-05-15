@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Channels;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using kurukuru.Classes;
 using kurukuru.Properties;
 
 namespace kurukuru._Windows
@@ -24,6 +26,17 @@ namespace kurukuru._Windows
         public TagWindow()
         {
             InitializeComponent();
+            string sett = File.ReadAllText(".\\Settings\\Theme.txt");
+            if (sett == "1")
+            {
+                ThemeClass.LightTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
+            }
+            else if (sett == "2")
+            {
+                ThemeClass.DarkTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
+            }
         }
 
         private List<Tag> Tags { get; set; } = KnowledgeBaseLibrary.Classes.Get.GetTagsList();

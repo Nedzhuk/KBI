@@ -18,7 +18,21 @@ namespace kurukuru
             FrameClass.FrameKBI = frameMW;
             FrameClass.FrameKBI.Navigate(new ProblemsPage());
             //Application.Current.Properties["NewTag"] = "";
-
+            string sett = File.ReadAllText(".\\Settings\\Theme.txt");
+            if (sett == "1")
+            {
+                ThemeClass.LightTheme();
+                cbTheme.Background = (SolidColorBrush)Application.Current.FindResource("Ligth.FillColor.AccentText.Tertiary");
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
+                cbTheme.IsChecked = false;
+            }
+            else if (sett == "2")
+            {
+                ThemeClass.DarkTheme();
+                cbTheme.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.AccentText.Tertiary");
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
+                cbTheme.IsChecked = true;
+            }
         }
 
         private void Tags_Click(object sender, RoutedEventArgs e)
@@ -26,8 +40,8 @@ namespace kurukuru
             Reset();
             Tags.Style = (System.Windows.Style)Application.Current.FindResource("Button.Accent.IconBefore");
             TagWindow tagWindow = new TagWindow();
-            tagWindow.Show();
-            tagWindow.Closed += Window_Closed;
+            tagWindow.ShowDialog();
+            tagWindow.Unloaded += UpdateWindow_Closed;
         }
 
         private void Window_Closed(object? sender, EventArgs e)
@@ -40,8 +54,8 @@ namespace kurukuru
             Reset();
             Softs.Style = (System.Windows.Style)Application.Current.FindResource("Button.Accent.IconBefore");
             SoftWindow softWindow = new SoftWindow();
-            softWindow.Show();
-            softWindow.Closed += Window_Closed;
+            softWindow.ShowDialog();
+            softWindow.Unloaded += UpdateWindow_Closed;
         }
 
         private void Answers_Click(object sender, RoutedEventArgs e)
@@ -49,8 +63,8 @@ namespace kurukuru
             Reset();
             Answers.Style = (System.Windows.Style)Application.Current.FindResource("Button.Accent.IconBefore");
             AnswerWindow answerWindow = new AnswerWindow();
-            answerWindow.Show();
-            answerWindow.Closed += Window_Closed;
+            answerWindow.ShowDialog();
+            answerWindow.Unloaded += UpdateWindow_Closed;
         }
         private void Reset()
         {
@@ -103,8 +117,8 @@ namespace kurukuru
                 {
                     NewProblemPage editProblemPage = new(problemDelete);
                     MessageWindow messageWindow = new MessageWindow(problemDelete);
-                    messageWindow.Show();
-                    messageWindow.Closed += UpdateWindow_Closed;
+                    messageWindow.ShowDialog();
+                    messageWindow.Unloaded += UpdateWindow_Closed;
                 }
                 else
                 {
@@ -120,8 +134,8 @@ namespace kurukuru
             Reset();
             Basket.Style = (System.Windows.Style)Application.Current.FindResource("Button.Accent.IconBefore");
             BasketWindow basketWindow = new BasketWindow();
-            basketWindow.Show();
-            basketWindow.Closed += UpdateWindow_Closed;
+            basketWindow.ShowDialog();
+            basketWindow.Unloaded += UpdateWindow_Closed;
         }
 
         private void UpdateWindow_Closed(object? sender, EventArgs e)
@@ -131,86 +145,23 @@ namespace kurukuru
         }
         private void SaveFile_Click(object sender, RoutedEventArgs e)
         {
-            //if(SelectedProblem.borderProblem != null)
-            //{
-            //    PrintDialog print = new PrintDialog();
-            //    if(print.ShowDialog() == true)
-            //    {
-            //        print.PrintVisual(SelectedProblem.borderProblem, "Документ База Знаний");
-            //    }
-            //}
+
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            var uri = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkBasicInput.xaml", UriKind.Relative);
-            var uri1 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkCommandBar.xaml", UriKind.Relative);
-            var uri2 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkGridSplitter.xaml", UriKind.Relative);
-            var uri3 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkListsAndCollections.xaml", UriKind.Relative);
-            var uri4 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkPrimitives.xaml", UriKind.Relative);
-            var uri5 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkScrolling.xaml", UriKind.Relative);
-            var uri6 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkTextFields.xaml", UriKind.Relative);
-            var uri7 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkTitleBar.xaml", UriKind.Relative);
-            var uri8 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkTreeView.xaml", UriKind.Relative);
-            var uri9 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\DarkWindow.xaml", UriKind.Relative);
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            ResourceDictionary resourceDict1 = Application.LoadComponent(uri1) as ResourceDictionary;
-            ResourceDictionary resourceDict2 = Application.LoadComponent(uri2) as ResourceDictionary;
-            ResourceDictionary resourceDict3 = Application.LoadComponent(uri3) as ResourceDictionary;
-            ResourceDictionary resourceDict4 = Application.LoadComponent(uri4) as ResourceDictionary;
-            ResourceDictionary resourceDict5 = Application.LoadComponent(uri5) as ResourceDictionary;
-            ResourceDictionary resourceDict6 = Application.LoadComponent(uri6) as ResourceDictionary;
-            ResourceDictionary resourceDict7 = Application.LoadComponent(uri7) as ResourceDictionary;
-            ResourceDictionary resourceDict8 = Application.LoadComponent(uri8) as ResourceDictionary;
-            ResourceDictionary resourceDict9 = Application.LoadComponent(uri9) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict1);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict2);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict3);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict4);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict5);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict6);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict7);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict8);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict9);
+            ThemeClass.DarkTheme();
+            cbTheme.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.AccentText.Tertiary");
             this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
+            FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
 
         private void cbTheme_Unchecked(object sender, RoutedEventArgs e)
         {
-            var uri = new Uri(".\\Resources\\ResourceDictionaries\\UI\\BasicInput.xaml", UriKind.Relative);
-            var uri1 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\CommandBar.xaml", UriKind.Relative);
-            var uri2 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\GridSplitter.xaml", UriKind.Relative);
-            var uri3 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\ListsAndCollections.xaml", UriKind.Relative);
-            var uri4 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\Primitives.xaml", UriKind.Relative);
-            var uri5 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\Scrolling.xaml", UriKind.Relative);
-            var uri6 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\TextFields.xaml", UriKind.Relative);
-            var uri7 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\TitleBar.xaml", UriKind.Relative);
-            var uri8 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\TreeView.xaml", UriKind.Relative);
-            var uri9 = new Uri(".\\Resources\\ResourceDictionaries\\UI\\Window.xaml", UriKind.Relative);
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            ResourceDictionary resourceDict1 = Application.LoadComponent(uri1) as ResourceDictionary;
-            ResourceDictionary resourceDict2 = Application.LoadComponent(uri2) as ResourceDictionary;
-            ResourceDictionary resourceDict3 = Application.LoadComponent(uri3) as ResourceDictionary;
-            ResourceDictionary resourceDict4 = Application.LoadComponent(uri4) as ResourceDictionary;
-            ResourceDictionary resourceDict5 = Application.LoadComponent(uri5) as ResourceDictionary;
-            ResourceDictionary resourceDict6 = Application.LoadComponent(uri6) as ResourceDictionary;
-            ResourceDictionary resourceDict7 = Application.LoadComponent(uri7) as ResourceDictionary;
-            ResourceDictionary resourceDict8 = Application.LoadComponent(uri8) as ResourceDictionary;
-            ResourceDictionary resourceDict9 = Application.LoadComponent(uri9) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict1);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict2);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict3);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict4);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict5);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict6);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict7);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict8);
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict9);
+            ThemeClass.LightTheme();
+            cbTheme.Background = (SolidColorBrush)Application.Current.FindResource("Ligth.FillColor.AccentText.Tertiary");
             this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
+            FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
     }
 }

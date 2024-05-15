@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using kurukuru.Classes;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -16,6 +18,17 @@ namespace kurukuru._Windows
             Guid id = DBContext.BaseConnecton.Statuses.FirstOrDefault(x => x.Title != "Активен").Id;
             BasketLV.ItemsSource = new _43pKnowledgeBaseContext().Problems.Where(x => x.ProblemStatus == id).OrderBy(x => x.Title).Include(x => x.Deleteds);
             ID = id;
+            string sett = File.ReadAllText(".\\Settings\\Theme.txt");
+            if (sett == "1")
+            {
+                ThemeClass.LightTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
+            }
+            else if (sett == "2")
+            {
+                ThemeClass.DarkTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
+            }
         }
 
         private void Recover_Click(object sender, RoutedEventArgs e)
@@ -54,6 +67,19 @@ namespace kurukuru._Windows
             {
                 DateOnly dateDelete = KnowledgeBaseLibrary.Classes.Get.GetDateOfDeletionByProblem(deletedProblem);
                 tb.Text = "Удалено " + dateDelete.ToString();
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if(BasketLV.SelectedItem != null)
+            {
+                MessageBoxResult res = MessageBox.Show("Удалить без возможности восстановления. Продолжить?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if(res == MessageBoxResult.Yes)
+                {
+                    KnowledgeBaseLibrary.Classes.Remove.DeleteProblemRightAway((Problem)BasketLV.SelectedItem);
+                    BasketLV.ItemsSource = new _43pKnowledgeBaseContext().Problems.Where(x => x.ProblemStatus == ID).OrderBy(x => x.Title).Include(x => x.Deleteds);
+                }
             }
         }
     }

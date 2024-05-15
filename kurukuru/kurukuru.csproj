@@ -70,6 +70,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Settings\Favorites.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Settings\Theme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Settings\WindowDisplay.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

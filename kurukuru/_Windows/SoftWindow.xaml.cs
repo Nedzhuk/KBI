@@ -1,5 +1,7 @@
-﻿using System;
+﻿using kurukuru.Classes;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,17 @@ namespace kurukuru._Windows
         public SoftWindow()
         {
             InitializeComponent();
+            string sett = File.ReadAllText(".\\Settings\\Theme.txt");
+            if (sett == "1")
+            {
+                ThemeClass.LightTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
+            }
+            else if (sett == "2")
+            {
+                ThemeClass.DarkTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
+            }
         }
         private List<Soft> Softs { get; set; } = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
 

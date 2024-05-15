@@ -29,12 +29,12 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <ListView Name="ListProblems" Grid.Row="2" Style="{StaticResource ListView}" BorderBrush="Black" BorderThickness="2" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
+        <ListView Name="ListProblems" Grid.Row="2" Style="{StaticResource ListView}" SelectionChanged="ListProblems_SelectionChanged" FontSize="18">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <ContextMenu.Template>
                         <ControlTemplate>
-                            <Border BorderBrush="DarkGray" CornerRadius="5" BorderThickness="1,1,3,3" Background="White">
+                            <Border BorderBrush="DarkGray" CornerRadius="5" BorderThickness="1,1,3,3" Background="White" Style="{StaticResource Window.ButtonSurface}">
                                 <StackPanel Orientation="Vertical">
                                     <MenuItem Header="Добавить новое" Click="New_Click"/>
                                     <MenuItem Header="Изменить" Loaded="MenuItemChange_Loaded" Click="Changed_Click"/>

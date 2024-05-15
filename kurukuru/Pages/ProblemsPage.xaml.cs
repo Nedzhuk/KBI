@@ -2,6 +2,7 @@
 using kurukuru._Windows;
 using kurukuru.Classes;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -81,7 +82,6 @@ namespace kurukuru.Pages
                     Text = ((Problem)ListProblems.SelectedItem).Description,
                     Name = "DescriptionTB",
                     Style = (Style)Application.Current.FindResource("Body"),
-                    Foreground = (Brush)new BrushConverter().ConvertFrom("#3b3b3b"),
                     MaxWidth = 1000,
                     TextWrapping = TextWrapping.Wrap
                 });
@@ -194,5 +194,6 @@ namespace kurukuru.Pages
         {
             FrameClass.FrameKBI.Navigate(new NewProblemPage((Problem)ListProblems.SelectedItem));
         }
+
     }
 }

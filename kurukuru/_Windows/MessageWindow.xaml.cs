@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kurukuru.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,17 @@ namespace kurukuru._Windows
             InitializeComponent();
             problemDelete = problem;
             TextMessageTB.Text = TextMessage;
+            string sett = File.ReadAllText(".\\Settings\\Theme.txt");
+            if (sett == "1")
+            {
+                ThemeClass.LightTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
+            }
+            else if (sett == "2")
+            {
+                ThemeClass.DarkTheme();
+                this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
+            }
         }
 
         private void ResultYes_Click(object sender, RoutedEventArgs e)

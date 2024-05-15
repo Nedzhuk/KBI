@@ -17,7 +17,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="Recover" Content="Восстановить" Style="{DynamicResource Button.Standart.TextOnly}" Click="Recover_Click" HorizontalAlignment="Right"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="Recover" Content="Восстановить" Style="{DynamicResource Button.Standart.TextOnly}" Click="Recover_Click" HorizontalAlignment="Right"/>
+            <Button x:Name="Delete" Content="&#xE74D;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Delete_Click"/>
+        </StackPanel>
         <ListView Grid.Row="1" x:Name="BasketLV" Style="{StaticResource ListView}">
             <ListView.ItemTemplate>
                 <DataTemplate>

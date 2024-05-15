@@ -170,9 +170,9 @@
     <SolidColorBrush x:Key="Dark.Background.FillColor.Default" Color="#FFF"/>
     <SolidColorBrush x:Key="Dark.Background.FillColor.MicaBackground" Color="#F3F3F3"/>
     <SolidColorBrush x:Key="Dark.StrokeColor.SurfaceStroke" Color="#757575"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Text.Secondary" Color="#78FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Text.Tertiary" Color="#36FFFFFF"/>
-    <SolidColorBrush x:Key="Dark.FillColor.Text.Disabled" Color="#5C000000"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Text.Secondary" Color="#99EBFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Text.Tertiary" Color="#60CDFF"/>
+    <SolidColorBrush x:Key="Dark.FillColor.Text.Disabled" Color="#36FFFFFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.AccentText.Primary" Color="#99EBFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.AccentText.Secondary" Color="#99EBFF"/>
     <SolidColorBrush x:Key="Dark.FillColor.AccentText.Tertiary" Color="#60CDFF"/>
