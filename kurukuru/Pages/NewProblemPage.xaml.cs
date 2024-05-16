@@ -44,10 +44,7 @@ namespace kurukuru.Pages
             foreach (Solution solution in KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit))
             {
                 Border brd = new Border();
-                brd.BorderBrush = new SolidColorBrush(Colors.Black);
-                brd.BorderThickness = new Thickness(0, 0, 0, 3);
-                brd.CornerRadius = new CornerRadius(5);
-                brd.Margin = new Thickness(0, 0, 0, 10);
+                brd.Style = (Style)Application.Current.FindResource("Window.Surface");
                 StackPanel stackPanel = new StackPanel();
                 StackPanel stackPanel1 = new StackPanel();
                 stackPanel1.Orientation = Orientation.Horizontal;
@@ -160,10 +157,7 @@ namespace kurukuru.Pages
         private void AddSolut_Click(object sender, RoutedEventArgs e)
         {
             Border brd = new Border();
-            brd.BorderBrush = new SolidColorBrush(Colors.Black);
-            brd.BorderThickness = new Thickness(0, 0, 0, 3);
-            brd.CornerRadius = new CornerRadius(5);
-            brd.Margin = new Thickness(0, 0, 0, 10);
+            brd.Style = (Style)Application.Current.FindResource("Window.Surface");
             StackPanel stackPanel = new StackPanel();
             StackPanel stackPanel1 = new StackPanel();
             stackPanel1.Orientation = Orientation.Horizontal;
