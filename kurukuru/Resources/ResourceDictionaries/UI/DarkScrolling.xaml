@@ -35,7 +35,7 @@
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
                         <Track x:Name="PART_Track" IsDirectionReversed="True" IsEnabled="{TemplateBinding IsMouseOver}" HorizontalAlignment="Center">
                             <Track.Thumb>
-                                <Thumb Style="{StaticResource ScrollBar.Thumb}"/>
+                                <Thumb Style="{DynamicResource ScrollBar.Thumb}"/>
                             </Track.Thumb>
                         </Track>
                     </Grid>

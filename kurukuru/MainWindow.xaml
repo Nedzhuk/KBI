@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="База знаний" MinHeight="650" MinWidth="1200"
         FontSize="18"
-        Background="{StaticResource Light.FillColor.System.SolidAttentionBackground}"
+        Background="{DynamicResource Light.FillColor.System.SolidAttentionBackground}"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized" Icon="/Resources/Images/KnowledgeBase.png">
     <Grid>
@@ -22,11 +22,10 @@
                 <ColumnDefinition
                  Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <CheckBox x:Name="cbTheme" Style="{StaticResource chkBullet}" Background="{StaticResource Ligth.FillColor.AccentText.Tertiary}" IsChecked="False" Content="Light" Tag="Dark" HorizontalAlignment="Left" FontSize="12" Width="120" Checked="CheckBox_Checked" Unchecked="cbTheme_Unchecked"/>
+            <CheckBox x:Name="cbTheme" Style="{DynamicResource chkBullet}" Background="{DynamicResource Ligth.FillColor.AccentText.Tertiary}"  Content="Light" Tag="Dark" HorizontalAlignment="Left" FontSize="12" Width="120" Checked="CheckBox_Checked" Unchecked="cbTheme_Unchecked"/>
             <StackPanel Grid.Column="1" Height="48" Orientation="Horizontal">
                 <Button x:Name="Add" Content="&#xE710;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Add_Click"/>
                 <Button x:Name="Edit" Content="&#xE70F;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Edit_Click"/>
-                <Button x:Name="SaveFile" Content="&#xe749;" Style="{DynamicResource Button.Standart.IconOnly}" Click="SaveFile_Click"/>
                 <Button x:Name="Delete" Content="&#xE74D;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Delete_Click"/>
                 <GridSplitter BorderBrush="{DynamicResource Light.StrokeColor.DividerStroke.Default}" BorderThickness="1" IsEnabled="False" Margin="0,4" Width="1"/>
                 <Button x:Name="Tags" Content="Тэги" Style="{DynamicResource Button.Standart.IconBefore}" Uid="&#xE8EC;" Click="Tags_Click"/>

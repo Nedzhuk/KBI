@@ -17,7 +17,6 @@ namespace kurukuru
             InitializeComponent();
             FrameClass.FrameKBI = frameMW;
             FrameClass.FrameKBI.Navigate(new ProblemsPage());
-            //Application.Current.Properties["NewTag"] = "";
             string sett = File.ReadAllText(".\\Settings\\Theme.txt");
             if (sett == "1")
             {
@@ -143,17 +142,12 @@ namespace kurukuru
             Reset();
             FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
-        private void SaveFile_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             ThemeClass.DarkTheme();
             cbTheme.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.AccentText.Tertiary");
             this.Background = (SolidColorBrush)Application.Current.FindResource("Dark.FillColor.System.SolidAttentionBackground");
-            FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
 
         private void cbTheme_Unchecked(object sender, RoutedEventArgs e)
@@ -161,7 +155,6 @@ namespace kurukuru
             ThemeClass.LightTheme();
             cbTheme.Background = (SolidColorBrush)Application.Current.FindResource("Ligth.FillColor.AccentText.Tertiary");
             this.Background = (SolidColorBrush)Application.Current.FindResource("Light.FillColor.System.SolidAttentionBackground");
-            FrameClass.FrameKBI.Navigate(new ProblemsPage());
         }
     }
 }

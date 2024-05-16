@@ -601,7 +601,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border x:Name="TemplateRoot" Background="{DynamicResource Dark.FillColor.Subtle.Transparent}" BorderBrush="{x:Null}" Width="30" Height="22" CornerRadius="3" SnapsToDevicePixels="True">
-                        <Label x:Name="Chevron" Foreground="{StaticResource Dark.FillColor.Text.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="0" FontFamily="Segoe Fluent Icons" FontSize="12" Content="&#xE972;" />
+                        <Label x:Name="Chevron" Foreground="{DynamicResource Dark.FillColor.Text.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="0" FontFamily="Segoe Fluent Icons" FontSize="12" Content="&#xE972;" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -639,7 +639,7 @@
                 </Border>
             </Popup>
             <TextBox x:Name="PART_EditableTextBox" Grid.ColumnSpan="2" Margin="0" Style="{DynamicResource TextBox}"/>
-            <ToggleButton x:Name="Chevron" Grid.Column="1" Margin="3,0" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBox.Chevron}"/>
+            <ToggleButton x:Name="Chevron" Grid.Column="1" Margin="3,0" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource ComboBox.Chevron}"/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
@@ -664,7 +664,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="ComboBox.Item" TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="Background" Value="{DynamicResource Dark.FillColor.Subtle.Transparent}"/>
+        <Setter Property="Background" Value="#252525"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{DynamicResource Dark.FillColor.Text.Primary}"/>
         <Setter Property="Height" Value="34"/>
@@ -688,7 +688,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Dark.FillColor.Subtle.Transparent}"/>
+                            <Setter Property="Background" TargetName="Border" Value="#252525"/>
                             <Setter Property="Visibility" TargetName="Selector" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
@@ -700,7 +700,7 @@
                                 <Condition Property="IsSelected" Value="False"/>
                                 <Condition Property="IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Dark.FillColor.Subtle.Secondary}"/>
+                            <Setter Property="Background" TargetName="Border" Value="#404040"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -732,7 +732,7 @@
         </Setter>
     </Style>
     <Style x:Key="ComboBox" TargetType="{x:Type ComboBox}">
-        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Background" Value="#252525"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{x:Null}"/>
         <Setter Property="Margin" Value="0,3"/>
@@ -740,11 +740,10 @@
         <Setter Property="IsEditable" Value="True"/>
         <Setter Property="StaysOpenOnEdit" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBox.Item}"/>
-        <Setter Property="Template" Value="{StaticResource ComboBox.Editable}"/>
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource ComboBox.Item}"/>
+        <Setter Property="Template" Value="{DynamicResource ComboBox.Editable}"/>
     </Style>
     <Style x:Key="chkBullet" TargetType="CheckBox">
-        <Setter Property="IsChecked" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#999"/>
         <Setter Property="Template">
@@ -793,7 +792,6 @@
         </Setter>
     </Style>
     <Style x:Key="CheckBox" TargetType="CheckBox">
-        <Setter Property="IsChecked" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#999"/>
         <Setter Property="Template">

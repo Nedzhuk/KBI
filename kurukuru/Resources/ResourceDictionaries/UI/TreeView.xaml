@@ -50,7 +50,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton x:Name="Expander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="18,2,14,2" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" ClickMode="Press" Style="{StaticResource TreeView.Chevron}"/>
+                                <ToggleButton x:Name="Expander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="18,2,14,2" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" ClickMode="Press" Style="{DynamicResource TreeView.Chevron}"/>
                                 <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="1" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
                                     <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </Border>
@@ -149,7 +149,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton x:Name="Expander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="36,2,14,2" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" ClickMode="Press" Style="{StaticResource TreeView.Chevron}"/>
+                                <ToggleButton x:Name="Expander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="36,2,14,2" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" ClickMode="Press" Style="{DynamicResource TreeView.Chevron}"/>
                                 <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="1" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
                                     <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </Border>
@@ -248,7 +248,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton x:Name="Expander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="54,2,14,2" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" ClickMode="Press" Style="{StaticResource TreeView.Chevron}"/>
+                                <ToggleButton x:Name="Expander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="54,2,14,2" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" ClickMode="Press" Style="{DynamicResource TreeView.Chevron}"/>
                                 <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="1" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
                                     <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </Border>

@@ -13,18 +13,18 @@
             <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Margin="20, 10, 20, 0" HorizontalAlignment="Center">
-            <TextBox x:Name="TitleProblem_TB" Width="600" HorizontalAlignment="Left" Style="{StaticResource TextBox}" DataContext="Название"/>
-            <TextBox x:Name="DescriptionProblem_TB" Height="60" MaxHeight="110" Width="1100" Margin="0,10" TextWrapping="Wrap" Style="{StaticResource TextBox}" DataContext="Описание"/>
-            <TextBlock Style="{StaticResource Body}" Text="Тэг" FontSize="18"/>
-            <ComboBox x:Name="TagsCB" Style="{StaticResource ComboBox}" Width="550" HorizontalAlignment="Left" Margin="0,0,0,10" DisplayMemberPath="Title" FontSize="18"/>
-            <TextBlock Style="{StaticResource Body}" Text="Шаблон ответа на заявку" FontSize="18"/>
-            <ComboBox x:Name="AnswersCB" Style="{StaticResource ComboBox}" Width="1000" HorizontalAlignment="Left" Margin="0,0,0,10" DisplayMemberPath="Answer1" SelectedValuePath="Id" IsEditable="True" FontSize="18"/>
-            <Button Content="Решение" Uid="&#xE710;" Style="{StaticResource Button.Standart.IconBefore}" HorizontalAlignment="Left" Click="AddSolut_Click"/>
-            <ListView x:Name="LS" Grid.Row="1" BorderBrush="Transparent" MaxHeight="350" Style="{StaticResource ListView}"/>
+            <TextBox x:Name="TitleProblem_TB" Width="600" HorizontalAlignment="Left" Style="{DynamicResource TextBox}" DataContext="Название"/>
+            <TextBox x:Name="DescriptionProblem_TB" Height="60" MaxHeight="110" Width="1100" Margin="0,10" TextWrapping="Wrap" Style="{DynamicResource TextBox}" DataContext="Описание"/>
+            <TextBlock Style="{DynamicResource Body}" Text="Тэг" FontSize="18"/>
+            <ComboBox x:Name="TagsCB" Style="{DynamicResource ComboBox}" Width="550" HorizontalAlignment="Left" Margin="0,0,0,10" DisplayMemberPath="Title" FontSize="18"/>
+            <TextBlock Style="{DynamicResource Body}" Text="Шаблон ответа на заявку" FontSize="18"/>
+            <ComboBox x:Name="AnswersCB" Style="{DynamicResource ComboBox}" Width="1000" HorizontalAlignment="Left" Margin="0,0,0,10" DisplayMemberPath="Answer1" SelectedValuePath="Id" IsEditable="True" FontSize="18"/>
+            <Button Content="Решение" Uid="&#xE710;" Style="{DynamicResource Button.Standart.IconBefore}" HorizontalAlignment="Left" Click="AddSolut_Click"/>
+            <ListView x:Name="LS" Grid.Row="1" BorderBrush="Transparent" MaxHeight="350" Style="{DynamicResource ListView}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="SaveBTN" Click="SaveBTN_Click" Content="Сохранить" Style="{StaticResource Button.Accent.TextOnly}" Height="40" Width="150" Margin="0,0,50,0"/>
-            <Button Content="Назад" Style="{StaticResource Button.Standart.TextOnly}" Width="150" Click="Back_Click"/>
+            <Button x:Name="SaveBTN" Click="SaveBTN_Click" Content="Сохранить" Style="{DynamicResource Button.Accent.TextOnly}" Height="40" Width="150" Margin="0,0,50,0"/>
+            <Button Content="Назад" Style="{DynamicResource Button.Standart.TextOnly}" Width="150" Click="Back_Click"/>
         </StackPanel>
     </Grid>
 </Page>

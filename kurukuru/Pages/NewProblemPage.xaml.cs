@@ -44,18 +44,19 @@ namespace kurukuru.Pages
             foreach (Solution solution in KnowledgeBaseLibrary.Classes.Get.GetSolutionsByProblem(problemEdit))
             {
                 Border brd = new Border();
-                brd.Style = (Style)Application.Current.FindResource("Window.Surface");
+                brd.SetResourceReference(StyleProperty, "Window.Surface");
                 StackPanel stackPanel = new StackPanel();
                 StackPanel stackPanel1 = new StackPanel();
                 stackPanel1.Orientation = Orientation.Horizontal;
-                stackPanel1.Children.Add(new TextBlock()
+                TextBlock t1 = new TextBlock()
                 {
-                    Text = $"Решение {I}",
-                    Style = (Style)(Application.Current.FindResource("Title"))
-                });
+                    Text = $"Решение {I}"
+                };
+                t1.SetResourceReference(StyleProperty, "Title");
+                stackPanel1.Children.Add(t1);
                 Button btn = new Button();
                 btn.Name = "ButtonAdd";
-                btn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+                btn.SetResourceReference(StyleProperty, "Button.Standart.IconBefore");
                 btn.Content = "Шаг";
                 btn.Uid = AddIcon;
                 btn.Width = 150;
@@ -64,7 +65,7 @@ namespace kurukuru.Pages
 
                 Button btnD = new Button();
                 btnD.Name = "ButtonDelSolution";
-                btnD.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+                btnD.SetResourceReference(StyleProperty, "Button.Standart.IconBefore");
                 btnD.Content = "Решение";
                 btnD.Uid = DeleteIcon;
                 btnD.Width = 150;
@@ -87,7 +88,7 @@ namespace kurukuru.Pages
                         sp.Margin = new Thickness(0, 0, 0, 5);
 
                         TextBox txt = new TextBox();
-                        txt.Style = (Style)Application.Current.FindResource("TextBox");
+                        txt.SetResourceReference(StyleProperty, "TextBox");
                         txt.Width = 550;
                         txt.Margin = new Thickness(0, 0, 10, 0);
                         txt.Name = $"solution{n}";
@@ -95,7 +96,7 @@ namespace kurukuru.Pages
 
                         ComboBox cb = new ComboBox();
                         cb.Name = $"comboBox{n}";
-                        cb.Style = (Style)Application.Current.FindResource("ComboBox");
+                        cb.SetResourceReference(StyleProperty, "ComboBox");
                         cb.Width = 160;
                         cb.FontSize = 18;
                         cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
@@ -110,7 +111,7 @@ namespace kurukuru.Pages
 
                         Button delBtn = new Button();
                         delBtn.Name = "ButtonDel";
-                        delBtn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconOnly"));
+                        delBtn.SetResourceReference(StyleProperty, "Button.Standart.IconOnly");
                         delBtn.Content = DeleteIcon;
                         delBtn.Width = 150;
                         delBtn.Height = 30;
@@ -157,18 +158,19 @@ namespace kurukuru.Pages
         private void AddSolut_Click(object sender, RoutedEventArgs e)
         {
             Border brd = new Border();
-            brd.Style = (Style)Application.Current.FindResource("Window.Surface");
+            brd.SetResourceReference(StyleProperty, "Window.Surface");
             StackPanel stackPanel = new StackPanel();
             StackPanel stackPanel1 = new StackPanel();
             stackPanel1.Orientation = Orientation.Horizontal;
-            stackPanel1.Children.Add(new TextBlock()
+            TextBlock tbl = new TextBlock()
             {
-                Text = $"Решение {I}",
-                Style = (Style)(Application.Current.FindResource("Title"))
-        });
+                Text = $"Решение {I}"
+            };
+            tbl.SetResourceReference(StyleProperty, "Title");
+            stackPanel1.Children.Add(tbl);
             Button btn = new Button();
             btn.Name = "ButtonAdd";
-            btn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+            btn.SetResourceReference(StyleProperty, "Button.Standart.IconBefore");
             btn.Content = "Шаг";
             btn.Uid = AddIcon;
             btn.Width = 150;
@@ -178,7 +180,7 @@ namespace kurukuru.Pages
 
             Button btnD = new Button();
             btnD.Name = "ButtonDelSolution";
-            btnD.Style = (Style)(Application.Current.FindResource("Button.Standart.IconBefore"));
+            btnD.SetResourceReference(StyleProperty, "Button.Standart.IconBefore");
             btnD.Content = "Решение";
             btnD.Uid = DeleteIcon;
             btnD.Width = 150;
@@ -204,15 +206,15 @@ namespace kurukuru.Pages
             sp.Margin = new Thickness(0, 0, 0, 5);
 
             TextBox txt = new TextBox();
-            txt.Style = (Style)Application.Current.FindResource("TextBox");
+            txt.SetResourceReference(StyleProperty, "TextBox");
             txt.Width = 550;
             txt.Margin = new Thickness(0, 0, 10, 0);
             txt.Name = $"solution{n}";
-            txt.DataContext = "Введите действие (например, \"Перейти в\")";
+            txt.DataContext = "Введите текст шага";
 
             ComboBox cb = new ComboBox();
             cb.Name = $"comboBox{n}";
-            cb.Style = (Style)Application.Current.FindResource("ComboBox");
+            cb.SetResourceReference(StyleProperty, "ComboBox");
             cb.Width = 160;
             cb.FontSize = 18;
             cb.ItemsSource = KnowledgeBaseLibrary.Classes.Get.GetSoftsList();
@@ -221,8 +223,7 @@ namespace kurukuru.Pages
 
             Button delBtn = new Button();
             delBtn.Name = "ButtonDel";
-            delBtn.Style = (Style)(Application.Current.FindResource("Button.Standart.IconOnly"));
-            //delBtn.Content = "❌";
+            delBtn.SetResourceReference(StyleProperty, "Button.Standart.IconOnly");
             delBtn.Content = DeleteIcon;
             delBtn.Width = 150;
             delBtn.Height = 30;
@@ -233,7 +234,7 @@ namespace kurukuru.Pages
             sp.Children.Add(cb);
             sp.Children.Add(delBtn);
             ListView lw = (ListView)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[1];
-            lw.Style = (Style)(Application.Current.FindResource("ListView"));
+            lw.SetResourceReference(StyleProperty, "ListView");
             ((ListView)((StackPanel)((StackPanel)((Button)sender).Parent).Parent).Children[1]).Items.Add(sp);
             n++;
         }
@@ -246,8 +247,8 @@ namespace kurukuru.Pages
 
         private void SaveBTN_Click(object sender, RoutedEventArgs e)
         {
-            TitleProblem_TB.Style = (Style)(Application.Current.FindResource("TextBox"));
-            DescriptionProblem_TB.Style = (Style)(Application.Current.FindResource("TextBox"));
+            TitleProblem_TB.SetResourceReference(StyleProperty, "TextBox");
+            DescriptionProblem_TB.SetResourceReference(StyleProperty, "TextBox");
 
             bool result = true;
             if (problemEdit == null)

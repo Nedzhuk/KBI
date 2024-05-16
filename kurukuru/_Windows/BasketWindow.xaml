@@ -9,7 +9,7 @@
         d:DesignWidth="500"
         Height="500"
         Width="500"
-        Background="{StaticResource Light.FillColor.System.SolidAttentionBackground}"
+        Background="{DynamicResource Light.FillColor.System.SolidAttentionBackground}"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/Images/IconAnswerWindow.png">
     <Grid>
@@ -21,7 +21,7 @@
             <Button x:Name="Recover" Content="Восстановить" Style="{DynamicResource Button.Standart.TextOnly}" Click="Recover_Click" HorizontalAlignment="Right"/>
             <Button x:Name="Delete" Content="&#xE74D;" Style="{DynamicResource Button.Standart.IconOnly}" Click="Delete_Click"/>
         </StackPanel>
-        <ListView Grid.Row="1" x:Name="BasketLV" Style="{StaticResource ListView}">
+        <ListView Grid.Row="1" x:Name="BasketLV" Style="{DynamicResource ListView}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -30,10 +30,10 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Style="{StaticResource Body}" Text="{Binding Title}"/>
-                            <TextBlock Style="{StaticResource Subtitle}" Uid="{Binding Id}" x:Name="DateDeleted" Loaded="DateDeleted_Loaded" Margin="15,5,0,0"/>
+                            <TextBlock Style="{DynamicResource Body}" Text="{Binding Title}"/>
+                            <TextBlock Style="{DynamicResource Subtitle}" Uid="{Binding Id}" x:Name="DateDeleted" Loaded="DateDeleted_Loaded" Margin="15,5,0,0"/>
                         </StackPanel>
-                        <TextBlock Grid.Column="1" Style="{StaticResource Body}" Uid="{Binding Id}" Loaded="TextBlock_Loaded" x:Name="DateForDelete" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Style="{DynamicResource Body}" Uid="{Binding Id}" Loaded="TextBlock_Loaded" x:Name="DateForDelete" VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

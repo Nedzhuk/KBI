@@ -9,7 +9,7 @@
         d:DesignWidth="500"
         Height="500"
         Width="500"
-        Background="{StaticResource Light.FillColor.System.SolidAttentionBackground}"
+        Background="{DynamicResource Light.FillColor.System.SolidAttentionBackground}"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded" Icon="/Resources/Images/IconAnswerWindow.png">
     <Grid>

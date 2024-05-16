@@ -67,30 +67,35 @@ namespace kurukuru.Pages
             if (ListProblems.SelectedItems.Count > 0)
             {
                 SelectedProblem.problem = (Problem)ListProblems.SelectedItem;
+                ScrollViewer scrollViewer = new ScrollViewer();
+                scrollViewer.SetResourceReference(StyleProperty, "ScrollViewer");
                 StackPanel stackPanel = new StackPanel();
                 stackPanel.Orientation = Orientation.Vertical;
                 stackPanel.Margin = new Thickness(30);
-                stackPanel.Children.Add(new TextBlock()
+                TextBlock tTitle = new TextBlock()
                 {
                     Text = ((Problem)ListProblems.SelectedItem).Title,
                     Name = "TitleTB",
-                    Style = (Style)Application.Current.FindResource("Text.Title"),
                     Margin = new Thickness(0, 0, 0, 5)
-                });
-                stackPanel.Children.Add(new TextBlock()
+                };
+                tTitle.SetResourceReference(StyleProperty, "Text.Title");
+                stackPanel.Children.Add(tTitle);
+                TextBlock tDesc = new TextBlock()
                 {
                     Text = ((Problem)ListProblems.SelectedItem).Description,
                     Name = "DescriptionTB",
-                    Style = (Style)Application.Current.FindResource("Text.BodyStrong"),
                     MaxWidth = 1000,
                     TextWrapping = TextWrapping.Wrap
-                });
-                stackPanel.Children.Add(new TextBlock()
+                };
+                tDesc.SetResourceReference(StyleProperty, "Text.BodyStrong");
+                stackPanel.Children.Add(tDesc);
+                TextBlock tTag = new TextBlock()
                 {
                     Text = $"Тэг: {(new _43pKnowledgeBaseContext().TagProblems.Include(x => x.Tag).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault() != null ? new _43pKnowledgeBaseContext().TagProblems.Include(x => x.Tag).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault().Tag.Title : "Не выбран")}",
-                    Name = "TagTB",
-                    Style = (Style)Application.Current.FindResource("Text.Body")
-                });
+                    Name = "TagTB"
+                };
+                tTag.SetResourceReference(StyleProperty, "Text.Body");
+                stackPanel.Children.Add(tTag);
                 ListView LV = new ListView();
                 List<Solution> popipo = KnowledgeBaseLibrary.Classes.Get.GetSolutionsList().Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).ToList();
 
@@ -101,42 +106,46 @@ namespace kurukuru.Pages
                     {
                         StackPanel sp = new StackPanel();
                         sp.Orientation = Orientation.Vertical;
-                        sp.Children.Add(new TextBlock()
+                        TextBlock t1 = new TextBlock()
                         {
                             Text = $"Решение {i}",
-                            Style = (Style)Application.Current.FindResource("Text.Subtitle"),
                             Margin = new Thickness(0, 10, 0, 0)
-                        });
+                        };
+                        t1.SetResourceReference(StyleProperty, "Text.Subtitle");
+                        sp.Children.Add(t1);
                         List<String> lsl = KnowledgeBaseLibrary.Classes.Get.GetStepsStringList(solution);
                         List<Step> lss = KnowledgeBaseLibrary.Classes.Get.GetStepsList(solution);
 
                         int n = 1;
                         foreach (String s in lsl)
                         {
-                            sp.Children.Add(new TextBlock()
+                            TextBlock t = new()
                             {
                                 Text = $"{n}. " + s,
-                                Style = (Style)Application.Current.FindResource("Text.Body"),
                                 Margin = new Thickness(10, 0, 0, 0),
                                 MaxWidth = 1000,
                                 TextWrapping = TextWrapping.Wrap
-                            });
+                            };
+                            t.SetResourceReference(StyleProperty, "Text.Body");
+                            sp.Children.Add(t);
                             n++;
                         }
                         stackPanel.Children.Add(sp);
                         i++;
                     }
                 }
-                stackPanel.Children.Add(new TextBlock()
+                TextBlock t2 = new TextBlock()
                 {
                     Text = $"*Шаблон решения: {(new _43pKnowledgeBaseContext().Solutions.Include(x => x.Answer).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault() != null ? new _43pKnowledgeBaseContext().Solutions.Include(x => x.Answer).Where(x => x.ProblemId == ((Problem)ListProblems.SelectedItem).Id).FirstOrDefault().Answer.Answer1 : "Не выбран")}",
                     Name = "AnswerTB",
-                    Style = (Style)Application.Current.FindResource("Text.BodyStrong"),
                     Margin = new Thickness(0, 10, 0, 0),
                     MaxWidth = 1000,
                     TextWrapping = TextWrapping.Wrap
-                });
-                ListSolution.Child = stackPanel;
+                };
+                t2.SetResourceReference(StyleProperty, "Text.BodyStrong");
+                stackPanel.Children.Add(t2);
+                scrollViewer.Content = stackPanel;
+                ListSolution.Child = scrollViewer;
             }
             SelectedProblem.borderProblem = ListSolution;
         }
